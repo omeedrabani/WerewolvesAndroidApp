@@ -4,7 +4,7 @@
     android:id="@+id/activity_select_number_of_players"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
+    android:orientation="vertical"
     android:gravity="center"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
@@ -12,24 +12,49 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves.SelectNumberOfPlayers">
 
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_delete"
+            android:id="@+id/minus_button"
+            android:tint="@android:color/white" />
+
+        <TextView
+            android:text="(Dynamic number of\nplayers goes here)"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:id="@+id/number_of_players_textview" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableTop="@android:drawable/ic_input_add"
+            android:id="@+id/add_button"
+            android:tint="@android:color/white" />
+
+    </LinearLayout>
+
+    <Space
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:drawableTop="@android:drawable/ic_delete"
-        android:id="@+id/minus_button"
+        android:text="@string/continue_text"
+        android:id="@+id/finish_number_of_players_button"
         android:tint="@android:color/white" />
-
-    <TextView
-        android:text="(Dynamic number of\nplayers goes here)"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/number_of_players_textview" />
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@android:drawable/ic_input_add"
-        android:id="@+id/add_button"
-        android:tint="@android:color/white" />
-
 </LinearLayout>
