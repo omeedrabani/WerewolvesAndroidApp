@@ -36,6 +36,12 @@ public class PlayerContent {
         return false;
     }
 
+    //could be used when ending game before going back to main screen
+    public static void clear() {
+        PLAYERS.clear();
+        //adapter.notifyDataSetChanged();
+    }
+
 
 
     public static class Player {
