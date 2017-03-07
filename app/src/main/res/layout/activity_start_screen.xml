@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_start_screen"
+    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
@@ -13,5 +15,34 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!" />
-</RelativeLayout>
+        android:text="TODO:
+        -better button images
+        -fix button layout
+        -make the new game button the largest, rules button medium sized, about us button should be tiny
+        -make the (overall) app design not so generic/ugly"
+        android:id="@+id/textView" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@android:drawable/btn_star_big_on"
+        android:text="@string/new_game_button_text"
+        android:textAllCaps="false"
+        android:id="@+id/new_game_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@android:drawable/btn_dialog"
+        android:text="@string/rules_button_text"
+        android:textAllCaps="false"
+        android:id="@+id/rules_button" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableTop="@android:drawable/btn_default"
+        android:text="@string/about_us_button_text"
+        android:textAllCaps="false"
+        android:id="@+id/about_us_button" />
+</LinearLayout>
