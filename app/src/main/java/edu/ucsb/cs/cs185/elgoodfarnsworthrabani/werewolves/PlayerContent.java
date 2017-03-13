@@ -4,28 +4,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class PlayerContent {
-    //declare static adapter here
+    public static PlayerAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
+
+    public static void setAdapter(PlayerAdapter pa) {
+        adapter = pa;
+    }
 
     public static void add(Player p) {
         PLAYERS.add(p);
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
-    public Player getPlayer(int pos) {
-        return PLAYERS.get(pos);
+    public static void remove(int pos) {
+        PLAYERS.remove(pos);
+        adapter.notifyDataSetChanged();
     }
 
-    public static void setRole(int pos, String role) {
-        Player p = PLAYERS.get(pos);
+
+    public static void setName(Player p, String name) {
+        p.name = name;
+        adapter.notifyDataSetChanged();
+    }
+
+    public static void setRole(Player p, String role) {
         p.role = role;
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
     public static void kill(int pos) {
         Player p = PLAYERS.get(pos);
         p.alive = false;
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
     public boolean isAlive(int pos) {
@@ -39,7 +49,7 @@ public class PlayerContent {
     //could be used when ending game before going back to main screen
     public static void clear() {
         PLAYERS.clear();
-        //adapter.notifyDataSetChanged();
+        adapter.notifyDataSetChanged();
     }
 
 
@@ -49,10 +59,7 @@ public class PlayerContent {
         public String role;
         public boolean alive;
 
-        //maybe remove role as parameter if role isn't known upon creation
-        public Player(String name, String role) {
-            this.name = name;
-            this.role = role;
+        public Player() {
             this.alive = true;
         }
     }

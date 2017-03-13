@@ -12,10 +12,10 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves.SelectNumberOfPlayers">
 
-    <Space
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_weight="1" />
+    <!--<Space-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_weight="1" />-->
 
     <LinearLayout
         android:orientation="horizontal"
@@ -49,6 +49,16 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_height="fill_parent"
+        android:layout_width="fill_parent"/>
+
     <Space
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -60,4 +70,7 @@
         android:text="@string/continue_text"
         android:id="@+id/finish_number_of_players_button"
         android:tint="@android:color/white" />
+
+    </LinearLayout>
+
 </LinearLayout>
