@@ -17,6 +17,11 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_weight="1" />-->
 
+    <Button
+        android:text="@string/clear_all_players_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/clear_all_players_button" />
 
     <TextView
         android:text="@string/select_players_text"

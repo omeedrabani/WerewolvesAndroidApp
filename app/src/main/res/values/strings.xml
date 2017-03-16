@@ -8,4 +8,5 @@
     <string name="select_players_text">Select the number of players for your game</string>
     <string name="not_including_mod_text">(Not including the moderator)</string>
     <string name="player_name_hint">Player Name</string>
+    <string name="clear_all_players_text">Clear All</string>
 </resources>

@@ -36,7 +36,6 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
             public void onClick(View view) {
                 Players.add(new Players.Player());
                 number_of_players_textview.setText(Integer.toString(Players.playerCount()));
-                pa.notifyDataSetChanged();
             }
         });
 
@@ -44,6 +43,21 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
         pa = new SelectNumberOfPlayersAdapter();
         Players.setAdapter(pa);
         myList.setAdapter(pa);
+
+        Button clear_all_players_button = (Button) findViewById(R.id.clear_all_players_button);
+        clear_all_players_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Players.clear();
+                number_of_players_textview.setText(Integer.toString(Players.playerCount()));
+            }
+        });
+
+        /*
+         TODO: Omeed - there's a bug where if the list becomes scrollable, then the EditText views can't keep focus
+                       i.e. you lose focus on the text field and can't enter text
+                       This happens because the scrollable listview is constantly refreshing
+        */
 
         final Button finish = (Button) findViewById(R.id.finish_number_of_players_button);
         finish.setOnClickListener(new View.OnClickListener() {
