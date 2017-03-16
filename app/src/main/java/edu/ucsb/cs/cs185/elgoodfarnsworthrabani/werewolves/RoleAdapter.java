@@ -18,18 +18,18 @@ import java.util.List;
 
 public class RoleAdapter extends BaseAdapter {
     private Context context;
-    //List<PlayerContent.Player> playerList = PlayerContent.PLAYERS;
+    //List<Players.Player> playerList = Players.PLAYERS;
 
     public RoleAdapter(Context c) {
         context = c;
     }
 
     public int getCount() {
-        return PlayerContent.playerCount();
+        return Players.playerCount();
     }
 
-    public PlayerContent.Player getItem(int pos) {
-        return PlayerContent.getPlayer(pos);
+    public Players.Player getItem(int pos) {
+        return Players.getPlayer(pos);
     }
 
     public long getItemId(int pos) {
@@ -43,7 +43,7 @@ public class RoleAdapter extends BaseAdapter {
         }
 
         TextView t = (TextView)v.findViewById(R.id.view_role_player_name);
-        t.setText(PlayerContent.getPlayer(pos).name);
+        t.setText(Players.getPlayer(pos).name);
 
         return v;
     }

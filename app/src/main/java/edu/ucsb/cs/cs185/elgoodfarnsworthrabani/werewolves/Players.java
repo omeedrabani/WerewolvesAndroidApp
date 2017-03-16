@@ -3,7 +3,7 @@ package edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PlayerContent {
+public class Players {
     public static PlayerAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
 
@@ -59,8 +59,6 @@ public class PlayerContent {
         PLAYERS.clear();
         adapter.notifyDataSetChanged();
     }
-
-
 
     public static class Player {
         public String name;

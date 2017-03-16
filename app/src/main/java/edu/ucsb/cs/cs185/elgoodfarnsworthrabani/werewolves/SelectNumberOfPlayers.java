@@ -36,7 +36,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
             public void onClick(View view) {
                 numPlayers = numPlayers + 1;
                 tv.setText(Integer.toString(numPlayers));
-                PlayerContent.add(new PlayerContent.Player());
+                Players.add(new Players.Player());
             }
         });
         minus.setOnClickListener(new View.OnClickListener() {
@@ -45,14 +45,14 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
                 if (numPlayers>0) {
                     numPlayers = numPlayers - 1;
                     tv.setText(Integer.toString(numPlayers));
-                    PlayerContent.remove(numPlayers-1);
+                    Players.remove(numPlayers-1);
                 }
             }
         });
 
         ListView myList = (ListView) findViewById(R.id.list);
         pa = new PlayerAdapter(this);
-        PlayerContent.setAdapter(pa);
+        Players.setAdapter(pa);
         myList.setAdapter(pa);
 
         final Button finish = (Button) findViewById(R.id.finish_number_of_players_button);
