@@ -15,7 +15,7 @@ import java.util.List;
 
 public class SelectNumberOfPlayers extends AppCompatActivity {
     int numPlayers;
-    public PlayerAdapter pa;
+    public SelectNumberOfPlayersAdapter pa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
         });
 
         ListView myList = (ListView) findViewById(R.id.list);
-        pa = new PlayerAdapter(this);
+        pa = new SelectNumberOfPlayersAdapter(this);
         Players.setAdapter(pa);
         myList.setAdapter(pa);
 

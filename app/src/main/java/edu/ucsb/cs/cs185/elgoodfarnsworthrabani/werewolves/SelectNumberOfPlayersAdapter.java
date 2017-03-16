@@ -12,11 +12,11 @@ import android.widget.EditText;
 
 import java.util.List;
 
-public class PlayerAdapter extends BaseAdapter {
+public class SelectNumberOfPlayersAdapter extends BaseAdapter {
     private Context context;
     //List<Players.Player> playerList = Players.PLAYERS;
 
-    public PlayerAdapter(Context c) {
+    public SelectNumberOfPlayersAdapter(Context c) {
         context = c;
     }
 

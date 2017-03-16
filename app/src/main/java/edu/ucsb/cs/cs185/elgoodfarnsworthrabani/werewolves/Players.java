@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Players {
-    public static PlayerAdapter adapter;
+    public static SelectNumberOfPlayersAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
 
-    public static void setAdapter(PlayerAdapter pa) {
+    public static void setAdapter(SelectNumberOfPlayersAdapter pa) {
         adapter = pa;
     }
 
