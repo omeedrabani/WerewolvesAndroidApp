@@ -15,8 +15,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SelectNumberOfPlayers"></activity>
-        <activity android:name=".PlayerRoles"></activity>
+        <activity android:name=".SelectNumberOfPlayers"
+            android:parentActivityName=".StartScreen"></activity>
+        <activity android:name=".PlayerRoles"
+            android:parentActivityName=".SelectNumberOfPlayers">
+        </activity>
     </application>
 
 </manifest>
