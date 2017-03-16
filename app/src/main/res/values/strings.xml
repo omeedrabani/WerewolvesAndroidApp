@@ -5,4 +5,7 @@
     <string name="about_us_button_text">About Us</string>
     <string name="continue_text">Continue</string>
     <string name="view_role_text">View Role</string>
+    <string name="select_players_text">Select the number of players for your game</string>
+    <string name="not_including_mod_text">(Not including the moderator)</string>
+    <string name="player_name_hint">Player Name</string>
 </resources>

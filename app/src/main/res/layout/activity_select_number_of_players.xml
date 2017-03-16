@@ -17,18 +17,30 @@
         <!--android:layout_height="wrap_content"-->
         <!--android:layout_weight="1" />-->
 
+
+    <TextView
+        android:text="@string/select_players_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/select_players_description_text"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:textSize="24sp"/>
+
+    <TextView
+        android:text="@string/not_including_mod_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/not_including_mod_textview"
+        android:gravity="center"
+        android:layout_gravity="center_vertical"
+        android:textSize="16sp"/>
+
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:drawableTop="@android:drawable/ic_delete"
-            android:id="@+id/minus_button"
-            android:tint="@android:color/white" />
 
         <TextView
             android:layout_width="wrap_content"

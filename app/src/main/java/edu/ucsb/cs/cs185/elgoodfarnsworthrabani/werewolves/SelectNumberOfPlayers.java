@@ -14,8 +14,9 @@ import android.widget.TextView;
 import java.util.List;
 
 public class SelectNumberOfPlayers extends AppCompatActivity {
-    int numPlayers;
     public SelectNumberOfPlayersAdapter pa;
+    public Button plus_button;
+    public static TextView number_of_players_textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,33 +26,22 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        numPlayers = 0;
-        final TextView tv = (TextView) findViewById(R.id.number_of_players_textview);
-        tv.setText(Integer.toString(numPlayers));
+        number_of_players_textview = (TextView) findViewById(R.id.number_of_players_textview);
+        number_of_players_textview.setText(Integer.toString(Players.playerCount()));
 
-        Button plus = (Button) findViewById(R.id.add_button);
-        Button minus = (Button) findViewById(R.id.minus_button);
-        plus.setOnClickListener(new View.OnClickListener() {
+        plus_button = (Button) findViewById(R.id.add_button);
+
+        plus_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                numPlayers = numPlayers + 1;
-                tv.setText(Integer.toString(numPlayers));
                 Players.add(new Players.Player());
-            }
-        });
-        minus.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (numPlayers>0) {
-                    numPlayers = numPlayers - 1;
-                    tv.setText(Integer.toString(numPlayers));
-                    Players.remove(numPlayers-1);
-                }
+                number_of_players_textview.setText(Integer.toString(Players.playerCount()));
+                pa.notifyDataSetChanged();
             }
         });
 
         ListView myList = (ListView) findViewById(R.id.list);
-        pa = new SelectNumberOfPlayersAdapter(this);
+        pa = new SelectNumberOfPlayersAdapter();
         Players.setAdapter(pa);
         myList.setAdapter(pa);
 
@@ -59,6 +49,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                /*
                 EditText last = (EditText) getCurrentFocus();
                 last.clearFocus();
                 finish.requestFocus();
@@ -67,6 +58,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
                 for (int i=0; i<numPlayers; i++) {
                     Log.d("NAME", pa.getItem(i).name );
                 }
+                */
 
                 Intent view_roles_intent = new Intent(context, PlayerRoles.class);
                 startActivity(view_roles_intent);

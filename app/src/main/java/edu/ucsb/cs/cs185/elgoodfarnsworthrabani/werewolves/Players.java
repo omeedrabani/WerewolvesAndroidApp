@@ -52,7 +52,8 @@ public class Players {
     //could be used when ending game before going back to main screen
     public static void clear() {
         PLAYERS.clear();
-        adapter.notifyDataSetChanged();
+        if (adapter != null)
+            adapter.notifyDataSetChanged();
     }
 
     public static class Player {
