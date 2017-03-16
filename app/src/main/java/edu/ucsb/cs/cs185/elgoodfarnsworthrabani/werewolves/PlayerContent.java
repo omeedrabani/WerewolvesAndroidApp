@@ -11,6 +11,14 @@ public class PlayerContent {
         adapter = pa;
     }
 
+    public static int playerCount(){
+        return PLAYERS.size();
+    }
+
+    public static Player getPlayer(int pos){
+        return PLAYERS.get(pos);
+    }
+
     public static void add(Player p) {
         PLAYERS.add(p);
         adapter.notifyDataSetChanged();

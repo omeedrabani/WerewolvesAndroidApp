@@ -4,4 +4,5 @@
     <string name="rules_button_text">Rules + Player Roles</string>
     <string name="about_us_button_text">About Us</string>
     <string name="continue_text">Continue</string>
+    <string name="view_role_text">View Role</string>
 </resources>

@@ -1,5 +1,7 @@
 package edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves;
 
+import android.content.Context;
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,6 +19,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        final Context context = this;
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_number_of_players);
 
@@ -64,6 +67,9 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
                 for (int i=0; i<numPlayers; i++) {
                     Log.d("NAME", pa.getItem(i).name );
                 }
+
+                Intent view_roles_intent = new Intent(context, PlayerRoles.class);
+                startActivity(view_roles_intent);
             }
         });
 

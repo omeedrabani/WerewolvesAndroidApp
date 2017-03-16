@@ -14,18 +14,18 @@ import java.util.List;
 
 public class PlayerAdapter extends BaseAdapter {
     private Context context;
-    List<PlayerContent.Player> playerList = PlayerContent.PLAYERS;
+    //List<PlayerContent.Player> playerList = PlayerContent.PLAYERS;
 
     public PlayerAdapter(Context c) {
         context = c;
     }
 
     public int getCount() {
-        return playerList.size();
+        return PlayerContent.playerCount();
     }
 
     public PlayerContent.Player getItem(int pos) {
-        return playerList.get(pos);
+        return PlayerContent.getPlayer(pos);
     }
 
     public long getItemId(int pos) {
@@ -44,7 +44,7 @@ public class PlayerAdapter extends BaseAdapter {
         }
 
 
-        holder.name.setText(playerList.get(pos).name);
+        holder.name.setText(PlayerContent.getPlayer(pos).name);
         holder.name.setId(pos);
 
         holder.name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -52,7 +52,7 @@ public class PlayerAdapter extends BaseAdapter {
                 if (!hasFocus){
                     final int position = v.getId();
                     final EditText Caption = (EditText) v;
-                    playerList.get(position).name = Caption.getText().toString();
+                    PlayerContent.getPlayer(position).name = Caption.getText().toString();
                 }
             }
         });
