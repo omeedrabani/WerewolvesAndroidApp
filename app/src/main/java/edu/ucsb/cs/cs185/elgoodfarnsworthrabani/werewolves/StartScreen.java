@@ -23,5 +23,23 @@ public class StartScreen extends AppCompatActivity {
                 startActivity(new_game_intent);
             }
         });
+
+        Button rules_button = (Button) findViewById(R.id.rules_button);
+        rules_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent rules_intent = new Intent(context, RulesScreen.class);
+                startActivity(rules_intent);
+            }
+        });
+
+        Button about_us_button = (Button) findViewById(R.id.about_us_button);
+        about_us_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent about_us_intent = new Intent(context, AboutUsScreen.class);
+                startActivity(about_us_intent);
+            }
+        });
     }
 }
