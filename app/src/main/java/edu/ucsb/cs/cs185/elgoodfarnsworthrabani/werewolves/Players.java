@@ -41,17 +41,12 @@ public class Players {
     }
 
     public static void kill(int pos) {
-        Player p = PLAYERS.get(pos);
-        p.alive = false;
+        PLAYERS.get(pos).alive = false;
         adapter.notifyDataSetChanged();
     }
 
     public boolean isAlive(int pos) {
-        Player p = PLAYERS.get(pos);
-        if (p.alive) {
-            return true;
-        }
-        return false;
+        return PLAYERS.get(pos).alive;
     }
 
     //could be used when ending game before going back to main screen
