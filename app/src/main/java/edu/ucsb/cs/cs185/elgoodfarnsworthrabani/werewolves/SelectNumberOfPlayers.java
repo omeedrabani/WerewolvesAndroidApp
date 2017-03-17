@@ -74,8 +74,8 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
                 }
                 */
 
-                Intent view_roles_intent = new Intent(context, PlayerRoles.class);
-                startActivity(view_roles_intent);
+                Intent select_number_of_roles_intent = new Intent(context, SelectNumberOfRoles.class);
+                startActivity(select_number_of_roles_intent);
             }
         });
 

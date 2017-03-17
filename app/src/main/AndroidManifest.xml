@@ -19,8 +19,11 @@
             android:name=".SelectNumberOfPlayers"
             android:parentActivityName=".StartScreen" />
         <activity
-            android:name=".PlayerRoles"
+            android:name=".SelectNumberOfRoles"
             android:parentActivityName=".SelectNumberOfPlayers" />
+        <activity
+            android:name=".PlayerRoles"
+            android:parentActivityName=".SelectNumberOfRoles" />
         <activity android:name=".RulesScreen"
             android:parentActivityName=".StartScreen"/>
         <activity android:name=".AboutUsScreen"

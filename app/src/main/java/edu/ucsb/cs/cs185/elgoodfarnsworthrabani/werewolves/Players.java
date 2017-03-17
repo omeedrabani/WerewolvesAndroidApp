@@ -4,6 +4,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Players {
+    public static final String WEREWOLF     = "Werewolf";
+    public static final String INVESTIGATOR = "Investigator (Town)";
+    public static final String DOCTOR       = "Doctor (Town)";
+    public static final String TOWNSPERSON  = "Townsperson";
+
     public static SelectNumberOfPlayersAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
 
@@ -35,8 +40,8 @@ public class Players {
         adapter.notifyDataSetChanged();
     }
 
-    public static void setRole(Player p, String role) {
-        p.role = role;
+    public static void setRole(int pos, String role) {
+        PLAYERS.get(pos).role = role;
         adapter.notifyDataSetChanged();
     }
 
@@ -47,6 +52,12 @@ public class Players {
 
     public boolean isAlive(int pos) {
         return PLAYERS.get(pos).alive;
+    }
+
+    static void clearPlayerRoles() {
+        for (Player p : PLAYERS) {
+            p.role = null;
+        }
     }
 
     //could be used when ending game before going back to main screen
