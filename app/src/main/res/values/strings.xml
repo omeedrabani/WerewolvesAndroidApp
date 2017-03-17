@@ -9,4 +9,8 @@
     <string name="not_including_mod_text">(Not including the moderator)</string>
     <string name="player_name_hint">Player Name</string>
     <string name="clear_all_players_text">Clear All</string>
+    <string name="verify_identity_text">Is this really you?\n(No cheating!)</string>
+    <string name="yes_text">Yes</string>
+    <string name="no_text">No</string>
+    <string name="dismiss_text">Dismiss</string>
 </resources>
