@@ -1,6 +1,7 @@
 package edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 
 public class Players {
@@ -67,6 +68,14 @@ public class Players {
             adapter.notifyDataSetChanged();
     }
 
+    public static boolean verifyInput(){
+        HashSet<String> hashSet = new HashSet<>();
+        for(Player p : PLAYERS) {
+            if((p.name.length() == 0) || (!hashSet.add(p.name))) return false;
+        }
+        return true;
+    }
+
     public static class Player {
         public String name;
         public String role;
@@ -74,6 +83,7 @@ public class Players {
 
         public Player() {
             this.alive = true;
+            this.name = "";
         }
     }
 }

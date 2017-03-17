@@ -19,6 +19,7 @@ public class StartScreen extends AppCompatActivity {
         new_game_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                Players.clear();
                 Intent new_game_intent = new Intent(context, SelectNumberOfPlayers.class);
                 startActivity(new_game_intent);
             }

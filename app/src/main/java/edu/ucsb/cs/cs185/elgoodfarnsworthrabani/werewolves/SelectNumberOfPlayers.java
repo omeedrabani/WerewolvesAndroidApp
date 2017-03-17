@@ -26,6 +26,9 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
+        final TextView players_error_message = (TextView) findViewById(R.id.players_error_message);
+        players_error_message.setVisibility(View.INVISIBLE);
+
         number_of_players_textview = (TextView) findViewById(R.id.number_of_players_textview);
         number_of_players_textview.setText(Integer.toString(Players.playerCount()));
 
@@ -73,9 +76,14 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
                     Log.d("NAME", pa.getItem(i).name );
                 }
                 */
-
-                Intent select_number_of_roles_intent = new Intent(context, SelectNumberOfRoles.class);
-                startActivity(select_number_of_roles_intent);
+                if(Players.verifyInput() == true){
+                    Intent select_number_of_roles_intent = new Intent(context, SelectNumberOfRoles.class);
+                    startActivity(select_number_of_roles_intent);
+                }
+                else{
+                    System.out.println("ERRRRORR!!!!");
+                    players_error_message.setVisibility(View.VISIBLE);
+                }
             }
         });
 
