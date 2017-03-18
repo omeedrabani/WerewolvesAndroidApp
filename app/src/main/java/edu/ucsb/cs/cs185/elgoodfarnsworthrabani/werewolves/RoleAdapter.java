@@ -23,10 +23,14 @@ import java.util.List;
 
 public class RoleAdapter extends BaseAdapter {
     private Context context;
+    private boolean moderator;
+    private boolean day_view;
     //List<Players.Player> playerList = Players.PLAYERS;
 
-    public RoleAdapter(Context c) {
-        context = c;
+    public RoleAdapter(Context c, boolean moderator, boolean day_view) {
+        this.context   = c;
+        this.moderator = moderator;
+        this.day_view  = day_view;
     }
 
     public int getCount() {
@@ -42,28 +46,54 @@ public class RoleAdapter extends BaseAdapter {
     }
 
     public View getView(int pos, View v, ViewGroup parent) {
-
-        if (v == null) {
-            v = LayoutInflater.from(context).inflate(R.layout.view_role_list_item, null);
-        }
-
+        final int player_position = pos;
         Activity activity = (Activity) parent.getContext();
         final FragmentManager fragment_manager = activity.getFragmentManager();
 
-        final int player_position = pos;
+        if (moderator) {
+            v = LayoutInflater.from(context).inflate(R.layout.moderator_view_role_list_item, null);
+            Button view_role_button = (Button) v.findViewById(R.id.view_role_button);
+            TextView view_player_role_textview = (TextView) v.findViewById(R.id.view_player_role_textview);
 
-        Button view_role_button = (Button) v.findViewById(R.id.view_role_button);
-        view_role_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Bundle bundle = new Bundle();
-                bundle.putInt("player_position", player_position);
-                bundle.putBoolean("moderator", false);
-                PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
-                player_role_fragment.setArguments(bundle);
-                player_role_fragment.show(fragment_manager, "Fragment");
+            if (day_view) {
+                view_role_button.setVisibility(View.VISIBLE);
+                view_player_role_textview.setVisibility(View.GONE);
+
+                view_role_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Bundle bundle = new Bundle();
+                        bundle.putInt("player_position", player_position);
+                        bundle.putBoolean("moderator", true);
+                        bundle.putBoolean("moderator_view_roles", true);
+                        PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
+                        player_role_fragment.setArguments(bundle);
+                        player_role_fragment.show(fragment_manager, "Fragment");
+                    }
+                });
             }
-        });
+            else {
+                view_role_button.setVisibility(View.GONE);
+                view_player_role_textview.setVisibility(View.VISIBLE);
+                view_player_role_textview.setText(Players.getPlayer(player_position).role);
+            }
+        }
+        else {
+            v = LayoutInflater.from(context).inflate(R.layout.view_role_list_item, null);
+
+            Button view_role_button = (Button) v.findViewById(R.id.view_role_button);
+            view_role_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Bundle bundle = new Bundle();
+                    bundle.putInt("player_position", player_position);
+                    bundle.putBoolean("moderator", false);
+                    PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
+                    player_role_fragment.setArguments(bundle);
+                    player_role_fragment.show(fragment_manager, "Fragment");
+                }
+            });
+        }
 
         TextView t = (TextView)v.findViewById(R.id.view_role_player_name);
         t.setText(Players.getPlayer(pos).name);

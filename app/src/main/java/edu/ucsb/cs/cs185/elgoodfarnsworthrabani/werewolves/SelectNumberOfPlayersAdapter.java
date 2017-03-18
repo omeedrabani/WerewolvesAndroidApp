@@ -36,14 +36,11 @@ public class SelectNumberOfPlayersAdapter extends BaseAdapter {
 
     public View getView(int pos, View v, ViewGroup parent) {
         ViewHolder holder;
-        if (v == null) {
-            holder = new ViewHolder();
-            v = LayoutInflater.from(parent.getContext()).inflate(R.layout.input_player, parent, false);
-            holder.name = (EditText) v.findViewById(R.id.player_name_input);
-            v.setTag(holder);
-        } else {
-            holder = (ViewHolder) v.getTag();
-        }
+        holder = new ViewHolder();
+        v = LayoutInflater.from(parent.getContext()).inflate(R.layout.input_player, parent, false);
+        holder.name = (EditText) v.findViewById(R.id.player_name_input);
+        v.setTag(holder);
+        holder = (ViewHolder) v.getTag();
 
         holder.name.setText(Players.getPlayer(pos).name);
         holder.name.setId(pos);

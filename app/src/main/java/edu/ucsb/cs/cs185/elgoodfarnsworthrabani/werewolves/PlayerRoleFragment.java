@@ -30,20 +30,35 @@ public class PlayerRoleFragment extends DialogFragment {
 
         int player_position = getArguments().getInt("player_position");
         boolean moderator = getArguments().getBoolean("moderator");
+        boolean moderator_view_roles = getArguments().getBoolean("moderator_view_roles");
 
         final Context context = getContext();
 
         if (moderator) {
-            String player_name_textview_string = "Moderator";
-            player_name_textview.setText(player_name_textview_string);
-            yes_button.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    dismiss();
-                    Intent moderator_screen_intent = new Intent(context, ModeratorScreen.class);
-                    startActivity(moderator_screen_intent);
-                }
-            });
+            if (moderator_view_roles) {
+                String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;
+                player_name_textview.setText(player_name_textview_string);
+                player_role_textview.setText(Players.getPlayer(player_position).role);
+
+                yes_button.setVisibility(View.GONE);
+                no_button.setVisibility(View.GONE);
+                verify_identity_textview.setVisibility(View.GONE);
+
+                player_role_textview.setVisibility(View.VISIBLE);
+                dismiss_button.setVisibility(View.VISIBLE);
+            }
+            else {
+                String player_name_textview_string = "Moderator";
+                player_name_textview.setText(player_name_textview_string);
+                yes_button.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dismiss();
+                        Intent moderator_screen_intent = new Intent(context, ModeratorScreen.class);
+                        startActivity(moderator_screen_intent);
+                    }
+                });
+            }
         }
         else {
             String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;

@@ -35,6 +35,7 @@ public class PlayerRoles extends AppCompatActivity {
                 Bundle bundle = new Bundle();
                 bundle.putInt("player_position", 0);
                 bundle.putBoolean("moderator", true);
+                bundle.putBoolean("moderator_view_roles", false);
                 PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
                 player_role_fragment.setArguments(bundle);
                 player_role_fragment.show(fragment_manager, "Fragment");
@@ -77,7 +78,7 @@ public class PlayerRoles extends AppCompatActivity {
             }
         }
 
-        final RoleAdapter roleAdapter = new RoleAdapter(this);
+        final RoleAdapter roleAdapter = new RoleAdapter(this, false, false);
         ListView l = (ListView)findViewById(R.id.view_role_list);
         l.setAdapter(roleAdapter);
     }
