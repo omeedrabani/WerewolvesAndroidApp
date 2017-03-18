@@ -19,7 +19,9 @@ public class StartScreen extends AppCompatActivity {
         new_game_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Players.clear();
+                // Omeed - I suggest we don't call Players.clear() because if someone starts a new game after finishing an old game
+                //         they won't need to enter in all the names again
+                // Players.clear();
                 Intent new_game_intent = new Intent(context, SelectNumberOfPlayers.class);
                 startActivity(new_game_intent);
             }
