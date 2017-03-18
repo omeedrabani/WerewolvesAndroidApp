@@ -55,6 +55,8 @@ public class PlayerRoleFragment extends DialogFragment {
                     public void onClick(View v) {
                         dismiss();
                         Intent moderator_screen_intent = new Intent(context, ModeratorScreen.class);
+                        moderator_screen_intent.putExtra("theme", R.style.AppTheme);
+                        moderator_screen_intent.putExtra("phase", 0); //0=day
                         startActivity(moderator_screen_intent);
                     }
                 });
