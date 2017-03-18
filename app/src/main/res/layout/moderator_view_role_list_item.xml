@@ -26,6 +26,15 @@
         />
 
     <Button
+        android:text="@string/undo_kill_text"
+        android:id="@+id/undo_kill_player_button"
+        android:textAllCaps="false"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        />
+
+    <Button
         android:text="@string/view_role_text"
         android:id="@+id/view_role_button"
         android:textAllCaps="false"

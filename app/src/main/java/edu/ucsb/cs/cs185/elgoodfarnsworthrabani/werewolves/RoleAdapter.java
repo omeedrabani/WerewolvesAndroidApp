@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.graphics.Paint;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -53,7 +54,36 @@ public class RoleAdapter extends BaseAdapter {
         if (moderator) {
             v = LayoutInflater.from(context).inflate(R.layout.moderator_view_role_list_item, null);
             Button view_role_button = (Button) v.findViewById(R.id.view_role_button);
+            Button kill_player_button = (Button) v.findViewById(R.id.kill_player_button);
+            Button undo_kill_player_button = (Button) v.findViewById(R.id.undo_kill_player_button);
             TextView view_player_role_textview = (TextView) v.findViewById(R.id.view_player_role_textview);
+
+            if (Players.isAlive(player_position)) {
+                kill_player_button.setVisibility(View.VISIBLE);
+                undo_kill_player_button.setVisibility(View.GONE);
+            }
+            else {
+                kill_player_button.setVisibility(View.GONE);
+                undo_kill_player_button.setVisibility(View.VISIBLE);
+            }
+
+            kill_player_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Players.kill(player_position);
+                    ModeratorScreen.moderator_role_adapter_day.notifyDataSetChanged();
+                    ModeratorScreen.moderator_role_adapter_night.notifyDataSetChanged();
+                }
+            });
+
+            undo_kill_player_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Players.revive(player_position);
+                    ModeratorScreen.moderator_role_adapter_day.notifyDataSetChanged();
+                    ModeratorScreen.moderator_role_adapter_night.notifyDataSetChanged();
+                }
+            });
 
             if (day_view) {
                 view_role_button.setVisibility(View.VISIBLE);
@@ -97,6 +127,10 @@ public class RoleAdapter extends BaseAdapter {
 
         TextView t = (TextView)v.findViewById(R.id.view_role_player_name);
         t.setText(Players.getPlayer(pos).name);
+
+        if (!Players.isAlive(player_position)){
+            t.setPaintFlags(t.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        }
 
         return v;
     }

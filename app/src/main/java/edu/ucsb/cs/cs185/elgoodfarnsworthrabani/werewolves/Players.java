@@ -58,7 +58,12 @@ public class Players {
         adapter.notifyDataSetChanged();
     }
 
-    public boolean isAlive(int pos) {
+    public static void revive(int pos) {
+        PLAYERS.get(pos).alive = true;
+        adapter.notifyDataSetChanged();
+    }
+
+    public static boolean isAlive(int pos) {
         return PLAYERS.get(pos).alive;
     }
 

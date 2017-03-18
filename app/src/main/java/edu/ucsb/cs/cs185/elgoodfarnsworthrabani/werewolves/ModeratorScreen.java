@@ -8,6 +8,9 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 
 public class ModeratorScreen extends AppCompatActivity {
+    public static RoleAdapter moderator_role_adapter_day;
+    public static RoleAdapter moderator_role_adapter_night;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,8 +23,8 @@ public class ModeratorScreen extends AppCompatActivity {
         ListView moderator_day_view_role_list   = (ListView) findViewById(R.id.moderator_day_view_role_list);
         ListView moderator_night_view_role_list = (ListView) findViewById(R.id.moderator_night_view_role_list);
 
-        final RoleAdapter moderator_role_adapter_day   = new RoleAdapter(this, true, true);
-        final RoleAdapter moderator_role_adapter_night = new RoleAdapter(this, true, false);
+        moderator_role_adapter_day   = new RoleAdapter(this, true, true);
+        moderator_role_adapter_night = new RoleAdapter(this, true, false);
         moderator_day_view_role_list.setAdapter(moderator_role_adapter_day);
         moderator_night_view_role_list.setAdapter(moderator_role_adapter_night);
 
