@@ -26,4 +26,6 @@
     <string name="go_to_night_phase_text">Go to Night Phase</string>
     <string name="kill_text">Kill</string>
     <string name="undo_kill_text">Undo Kill</string>
+    <string name="night_phase_script_button_text">Night Phase Script</string>
+    <string name="day_phase_script_button_text">Day Phase Script</string>
 </resources>

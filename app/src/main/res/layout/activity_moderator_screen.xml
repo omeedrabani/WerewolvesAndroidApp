@@ -33,6 +33,13 @@
             android:gravity="center_horizontal"
             android:textSize="30sp" />
 
+        <Button
+            android:text="@string/day_phase_script_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/day_phase_script_button"
+            />
+
         <ListView
             android:id="@+id/moderator_day_view_role_list"
             android:orientation="vertical"
@@ -64,6 +71,13 @@
             android:id="@+id/moderator_night_textview"
             android:gravity="center_horizontal"
             android:textSize="30sp" />
+
+        <Button
+            android:text="@string/night_phase_script_button_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/night_phase_script_button"
+            />
 
         <ListView
             android:id="@+id/moderator_night_view_role_list"
