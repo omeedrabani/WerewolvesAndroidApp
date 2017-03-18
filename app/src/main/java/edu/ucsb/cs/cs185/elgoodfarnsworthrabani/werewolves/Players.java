@@ -89,9 +89,9 @@ public class Players {
         public String role;
         public boolean alive;
 
-        public Player() {
+        public Player(boolean quick_add) {
             this.alive = true;
-            this.name = "";
+            this.name = quick_add ? (Players.playerCount() + 1 ) + "" : "";
         }
     }
 }

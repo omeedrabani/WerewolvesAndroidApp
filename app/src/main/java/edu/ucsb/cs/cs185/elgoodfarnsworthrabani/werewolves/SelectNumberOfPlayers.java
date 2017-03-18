@@ -38,7 +38,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
         plus_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Players.add(new Players.Player());
+                Players.add(new Players.Player(true));
                 number_of_players_textview.setText(Integer.toString(Players.playerCount()));
             }
         });
