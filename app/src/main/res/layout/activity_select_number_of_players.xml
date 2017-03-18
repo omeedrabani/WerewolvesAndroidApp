@@ -81,7 +81,9 @@
         android:id="@+id/list"
         android:layout_height="0dp"
         android:layout_width="fill_parent"
-        android:layout_weight="4"/>
+        android:layout_weight="4"
+        android:descendantFocusability="afterDescendants"
+        android:windowSoftInputMode="adjustPan" />
 
     <Button
         android:layout_width="match_parent"
@@ -89,6 +91,7 @@
         android:text="@string/continue_text"
         android:id="@+id/finish_number_of_players_button"
         android:tint="@android:color/white"
+        android:windowSoftInputMode="adjustPan"
         android:layout_marginBottom="@dimen/text_size" />
 
 </LinearLayout>

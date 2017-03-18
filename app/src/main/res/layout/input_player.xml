@@ -9,6 +9,8 @@
         android:layout_height="wrap_content"
         android:hint="@string/player_name_hint"
         android:layout_weight="3"
+        android:inputType="text"
+        android:imeOptions="actionDone"
         />
 
     <Button
@@ -17,6 +19,4 @@
         android:drawableTop="@android:drawable/ic_delete"
         android:id="@+id/delete_player_button"
         android:layout_weight="1" />
-
-
 </LinearLayout>

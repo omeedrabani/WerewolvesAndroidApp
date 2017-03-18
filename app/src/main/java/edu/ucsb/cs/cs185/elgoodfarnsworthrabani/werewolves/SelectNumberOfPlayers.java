@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
@@ -16,7 +17,6 @@ import java.util.List;
 public class SelectNumberOfPlayers extends AppCompatActivity {
     public SelectNumberOfPlayersAdapter pa;
     public Button plus_button;
-    public static TextView number_of_players_textview;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +25,12 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
         setContentView(R.layout.activity_select_number_of_players);
 
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         final TextView players_error_message = (TextView) findViewById(R.id.players_error_message);
         players_error_message.setVisibility(View.INVISIBLE);
 
-        number_of_players_textview = (TextView) findViewById(R.id.number_of_players_textview);
+        final TextView number_of_players_textview = (TextView) findViewById(R.id.number_of_players_textview);
         number_of_players_textview.setText(Integer.toString(Players.playerCount()));
 
         plus_button = (Button) findViewById(R.id.add_button);
@@ -53,36 +54,22 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
             public void onClick(View view) {
                 Players.clear();
                 number_of_players_textview.setText(Integer.toString(Players.playerCount()));
+                players_error_message.setVisibility(View.INVISIBLE);
             }
         });
-
-        /*
-         TODO: Omeed - there's a bug where if the list becomes scrollable, then the EditText views can't keep focus
-                       i.e. you lose focus on the text field and can't enter text
-                       This happens because the scrollable listview is constantly refreshing
-        */
 
         final Button finish = (Button) findViewById(R.id.finish_number_of_players_button);
         finish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                EditText last = (EditText) getCurrentFocus();
-                last.clearFocus();
-                finish.requestFocus();
-
-                //for debugging purposes
-                for (int i=0; i<numPlayers; i++) {
-                    Log.d("NAME", pa.getItem(i).name );
-                }
-                */
-                if(Players.verifyInput() == true){
-                    Intent select_number_of_roles_intent = new Intent(context, SelectNumberOfRoles.class);
-                    startActivity(select_number_of_roles_intent);
-                }
-                else{
-                    System.out.println("ERRRRORR!!!!");
-                    players_error_message.setVisibility(View.VISIBLE);
+                if (Players.playerCount() > 0) {
+                    if (Players.verifyInput()) {
+                        Intent select_number_of_roles_intent = new Intent(context, SelectNumberOfRoles.class);
+                        startActivity(select_number_of_roles_intent);
+                    } else {
+                        System.out.println("ERRRRORR!!!!");
+                        players_error_message.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         });

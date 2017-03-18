@@ -30,13 +30,11 @@ public class PlayerRoleFragment extends DialogFragment {
 
         String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;
         player_name_textview.setText(player_name_textview_string);
-        // TODO: implement player roles functionality (the player role textview will then no longer be blank)
         player_role_textview.setText(Players.getPlayer(player_position).role);
 
         yes_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: show player role
                 yes_button.setVisibility(View.GONE);
                 no_button.setVisibility(View.GONE);
                 verify_identity_textview.setVisibility(View.GONE);

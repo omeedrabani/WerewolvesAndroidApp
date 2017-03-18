@@ -1,5 +1,6 @@
 package edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves;
 
+import android.app.Activity;
 import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -48,25 +49,35 @@ public class SelectNumberOfPlayersAdapter extends BaseAdapter {
         holder.name.setId(pos);
 
         final int player_position = pos;
+
+        final TextView players_error_message = (TextView) ((Activity)parent.getContext()).findViewById(R.id.players_error_message);
+        final TextView number_of_players_textview = (TextView) ((Activity)parent.getContext()).findViewById(R.id.number_of_players_textview);
+
         Button delete_player_button = (Button) v.findViewById(R.id.delete_player_button);
         delete_player_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Players.remove(player_position);
-                SelectNumberOfPlayers.number_of_players_textview.setText(Integer.toString(Players.playerCount()));
+                number_of_players_textview.setText(Integer.toString(Players.playerCount()));
+                if (Players.verifyInput()) {
+                    players_error_message.setVisibility(View.INVISIBLE);
+                }
             }
         });
 
-        holder.name.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-            public void onFocusChange(View v, boolean hasFocus) {
-                if (!hasFocus){
-                    final int position = v.getId();
-                    if (Players.playerCount() > position) {
-                        final EditText Caption = (EditText) v;
-                        Players.getPlayer(position).name = Caption.getText().toString();
+        holder.name.addTextChangedListener(new TextWatcher() {
+            public void afterTextChanged(Editable s) {
+                if (Players.playerCount() > player_position) {
+                    Players.getPlayer(player_position).name = s.toString();
+                    if (Players.verifyInput()) {
+                        players_error_message.setVisibility(View.INVISIBLE);
                     }
                 }
             }
+
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+            public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
         return v;

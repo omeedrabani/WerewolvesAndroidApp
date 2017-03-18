@@ -19,5 +19,5 @@
     <string name="townspersons_label">Townspersons</string>
     <string name="roles_error_message_text">Error:\nTotal number of roles must equal total number of players.</string>
     <string name="start_game_text">Start Game!</string>
-    <string name="players_error_message_text">Error: All players must have an unique name.</string>
+    <string name="players_error_message_text">Error: All players must have an unique, non-blank name.</string>
 </resources>

@@ -71,7 +71,7 @@ public class Players {
     public static boolean verifyInput(){
         HashSet<String> hashSet = new HashSet<>();
         for(Player p : PLAYERS) {
-            if((p.name.length() == 0) || (!hashSet.add(p.name))) return false;
+            if((p.name.length() == 0) || (!hashSet.add(p.name.trim().toLowerCase()))) return false;
         }
         return true;
     }

@@ -57,7 +57,6 @@ public class SelectNumberOfRoles extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (totalSelectedRoles() == Players.playerCount()){
-                    // TODO: send the values as parameters
                     Intent view_roles_intent = new Intent(context, PlayerRoles.class);
                     view_roles_intent.putExtra("number_of_werewolves", number_of_werewolves);
                     view_roles_intent.putExtra("number_of_investigators", number_of_investigators);
