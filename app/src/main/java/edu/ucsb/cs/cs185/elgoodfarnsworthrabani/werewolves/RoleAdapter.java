@@ -58,6 +58,7 @@ public class RoleAdapter extends BaseAdapter {
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
                 bundle.putInt("player_position", player_position);
+                bundle.putBoolean("moderator", false);
                 PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
                 player_role_fragment.setArguments(bundle);
                 player_role_fragment.show(fragment_manager, "Fragment");

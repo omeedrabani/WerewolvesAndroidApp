@@ -10,6 +10,13 @@ public class Players {
     public static final String DOCTOR       = "Doctor (Town)";
     public static final String TOWNSPERSON  = "Townsperson";
 
+    public static int number_of_werewolves;
+    public static int number_of_investigators;
+    public static int number_of_doctors;
+    public static int number_of_townspersons;
+
+    public static boolean refresh_roles = false;
+
     public static SelectNumberOfPlayersAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
 
@@ -59,6 +66,7 @@ public class Players {
         for (Player p : PLAYERS) {
             p.role = null;
         }
+
     }
 
     //could be used when ending game before going back to main screen

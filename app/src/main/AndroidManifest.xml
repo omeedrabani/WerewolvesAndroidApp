@@ -24,6 +24,9 @@
         <activity
             android:name=".PlayerRoles"
             android:parentActivityName=".SelectNumberOfRoles" />
+        <activity
+            android:name=".ModeratorScreen"
+            android:parentActivityName=".PlayerRoles" />
         <activity android:name=".RulesScreen"
             android:parentActivityName=".StartScreen"/>
         <activity android:name=".AboutUsScreen"

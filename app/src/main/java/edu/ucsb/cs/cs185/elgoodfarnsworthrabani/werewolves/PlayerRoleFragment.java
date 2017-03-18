@@ -1,6 +1,8 @@
 package edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves;
 
 import android.app.DialogFragment;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,22 +29,39 @@ public class PlayerRoleFragment extends DialogFragment {
         player_role_textview.setVisibility(View.GONE);
 
         int player_position = getArguments().getInt("player_position");
+        boolean moderator = getArguments().getBoolean("moderator");
 
-        String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;
-        player_name_textview.setText(player_name_textview_string);
-        player_role_textview.setText(Players.getPlayer(player_position).role);
+        final Context context = getContext();
 
-        yes_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                yes_button.setVisibility(View.GONE);
-                no_button.setVisibility(View.GONE);
-                verify_identity_textview.setVisibility(View.GONE);
+        if (moderator) {
+            String player_name_textview_string = "Moderator";
+            player_name_textview.setText(player_name_textview_string);
+            yes_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    dismiss();
+                    Intent moderator_screen_intent = new Intent(context, ModeratorScreen.class);
+                    startActivity(moderator_screen_intent);
+                }
+            });
+        }
+        else {
+            String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;
+            player_name_textview.setText(player_name_textview_string);
+            player_role_textview.setText(Players.getPlayer(player_position).role);
 
-                player_role_textview.setVisibility(View.VISIBLE);
-                dismiss_button.setVisibility(View.VISIBLE);
-            }
-        });
+            yes_button.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    yes_button.setVisibility(View.GONE);
+                    no_button.setVisibility(View.GONE);
+                    verify_identity_textview.setVisibility(View.GONE);
+
+                    player_role_textview.setVisibility(View.VISIBLE);
+                    dismiss_button.setVisibility(View.VISIBLE);
+                }
+            });
+        }
 
         no_button.setOnClickListener(new DismissDialogListener());
         dismiss_button.setOnClickListener(new DismissDialogListener());

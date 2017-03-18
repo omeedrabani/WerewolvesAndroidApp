@@ -11,11 +11,6 @@ import android.widget.TextView;
 import org.w3c.dom.Text;
 
 public class SelectNumberOfRoles extends AppCompatActivity {
-    private int number_of_werewolves;
-    private int number_of_investigators;
-    private int number_of_doctors;
-    private int number_of_townspersons;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         final Context context = this;
@@ -23,25 +18,25 @@ public class SelectNumberOfRoles extends AppCompatActivity {
         setContentView(R.layout.activity_select_number_of_roles_screen);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        number_of_werewolves = Players.playerCount() / 6;
-        if (number_of_werewolves * 6 < Players.playerCount())
-            number_of_werewolves++;
+        Players.number_of_werewolves = Players.playerCount() / 6;
+        if (Players.number_of_werewolves * 6 < Players.playerCount())
+            Players.number_of_werewolves++;
 
-        int number_of_roles_remaining = Players.playerCount() - number_of_werewolves;
+        int number_of_roles_remaining = Players.playerCount() - Players.number_of_werewolves;
 
         if (number_of_roles_remaining > 5) {
-            number_of_investigators = 1;
-            number_of_doctors       = 1;
-            number_of_townspersons  = number_of_roles_remaining - 2;
+            Players.number_of_investigators = 1;
+            Players.number_of_doctors       = 1;
+            Players.number_of_townspersons  = number_of_roles_remaining - 2;
         }
         else if (number_of_roles_remaining == 5) {
-            number_of_investigators = 0;
-            number_of_doctors       = 1;
-            number_of_townspersons  = number_of_roles_remaining - 1;
+            Players.number_of_investigators = 0;
+            Players.number_of_doctors       = 1;
+            Players.number_of_townspersons  = number_of_roles_remaining - 1;
         } else {
-            number_of_investigators = 0;
-            number_of_doctors       = 0;
-            number_of_townspersons  = number_of_roles_remaining;
+            Players.number_of_investigators = 0;
+            Players.number_of_doctors       = 0;
+            Players.number_of_townspersons  = number_of_roles_remaining;
         }
 
         TextView total_number_of_players_textview = (TextView) findViewById(R.id.total_number_of_players_textview);
@@ -57,11 +52,8 @@ public class SelectNumberOfRoles extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 if (totalSelectedRoles() == Players.playerCount()){
+                    Players.refresh_roles = true;
                     Intent view_roles_intent = new Intent(context, PlayerRoles.class);
-                    view_roles_intent.putExtra("number_of_werewolves", number_of_werewolves);
-                    view_roles_intent.putExtra("number_of_investigators", number_of_investigators);
-                    view_roles_intent.putExtra("number_of_doctors", number_of_doctors);
-                    view_roles_intent.putExtra("number_of_townspersons", number_of_townspersons);
                     startActivity(view_roles_intent);
                 }
                 else {
@@ -95,14 +87,14 @@ public class SelectNumberOfRoles extends AppCompatActivity {
         TextView number_of_doctors_textview       = (TextView) findViewById(R.id.number_of_doctors_textview);
         TextView number_of_townsperson_textview   = (TextView) findViewById(R.id.number_of_townsperson_textview);
 
-        number_of_werewolves_textview.setText(Integer.toString(number_of_werewolves));
-        number_of_investigators_textview.setText(Integer.toString(number_of_investigators));
-        number_of_doctors_textview.setText(Integer.toString(number_of_doctors));
-        number_of_townsperson_textview.setText(Integer.toString(number_of_townspersons));
+        number_of_werewolves_textview.setText(Integer.toString(Players.number_of_werewolves));
+        number_of_investigators_textview.setText(Integer.toString(Players.number_of_investigators));
+        number_of_doctors_textview.setText(Integer.toString(Players.number_of_doctors));
+        number_of_townsperson_textview.setText(Integer.toString(Players.number_of_townspersons));
     }
 
     public int totalSelectedRoles() {
-        return number_of_werewolves + number_of_investigators + number_of_doctors + number_of_townspersons;
+        return Players.number_of_werewolves + Players.number_of_investigators + Players.number_of_doctors + Players.number_of_townspersons;
     }
 
     public void hideErrorMessageIfTotalsMatch() {
@@ -122,30 +114,30 @@ public class SelectNumberOfRoles extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.werewolves_minus_button: {
-                    if (number_of_werewolves > 0) {
-                        number_of_werewolves--;
-                        updateTextView(R.id.number_of_werewolves_textview, number_of_werewolves + "");
+                    if (Players.number_of_werewolves > 0) {
+                        Players.number_of_werewolves--;
+                        updateTextView(R.id.number_of_werewolves_textview, Players.number_of_werewolves + "");
                     }
                     break;
                 }
                 case R.id.doctors_minus_button: {
-                    if (number_of_doctors > 0) {
-                        number_of_doctors--;
-                        updateTextView(R.id.number_of_doctors_textview, number_of_doctors + "");
+                    if (Players.number_of_doctors > 0) {
+                        Players.number_of_doctors--;
+                        updateTextView(R.id.number_of_doctors_textview, Players.number_of_doctors + "");
                     }
                     break;
                 }
                 case R.id.investigators_minus_button: {
-                    if (number_of_investigators > 0) {
-                        number_of_investigators--;
-                        updateTextView(R.id.number_of_investigators_textview, number_of_investigators + "");
+                    if (Players.number_of_investigators > 0) {
+                        Players.number_of_investigators--;
+                        updateTextView(R.id.number_of_investigators_textview, Players.number_of_investigators + "");
                     }
                     break;
                 }
                 case R.id.townspersons_minus_button: {
-                    if (number_of_townspersons > 0) {
-                        number_of_townspersons--;
-                        updateTextView(R.id.number_of_townsperson_textview, number_of_townspersons + "");
+                    if (Players.number_of_townspersons > 0) {
+                        Players.number_of_townspersons--;
+                        updateTextView(R.id.number_of_townsperson_textview, Players.number_of_townspersons + "");
                     }
                     break;
                 }
@@ -159,23 +151,23 @@ public class SelectNumberOfRoles extends AppCompatActivity {
             if (totalSelectedRoles() < Players.playerCount()) {
                 switch (v.getId()) {
                     case R.id.werewolves_add_button: {
-                        number_of_werewolves++;
-                        updateTextView(R.id.number_of_werewolves_textview, number_of_werewolves + "");
+                        Players.number_of_werewolves++;
+                        updateTextView(R.id.number_of_werewolves_textview, Players.number_of_werewolves + "");
                         break;
                     }
                     case R.id.doctors_add_button: {
-                        number_of_doctors++;
-                        updateTextView(R.id.number_of_doctors_textview, number_of_doctors + "");
+                        Players.number_of_doctors++;
+                        updateTextView(R.id.number_of_doctors_textview, Players.number_of_doctors + "");
                         break;
                     }
                     case R.id.investigators_add_button: {
-                        number_of_investigators++;
-                        updateTextView(R.id.number_of_investigators_textview, number_of_investigators + "");
+                        Players.number_of_investigators++;
+                        updateTextView(R.id.number_of_investigators_textview, Players.number_of_investigators + "");
                         break;
                     }
                     case R.id.townspersons_add_button: {
-                        number_of_townspersons++;
-                        updateTextView(R.id.number_of_townsperson_textview, number_of_townspersons + "");
+                        Players.number_of_townspersons++;
+                        updateTextView(R.id.number_of_townsperson_textview, Players.number_of_townspersons + "");
                         break;
                     }
                 }
