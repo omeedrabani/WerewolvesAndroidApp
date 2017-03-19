@@ -19,6 +19,8 @@ public class Players {
 
     public static SelectNumberOfPlayersAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
+    public static final List<Player> ALIVE = new ArrayList<Player>();
+    public static final List<Player> DEAD = new ArrayList<Player>();
 
     public static void setAdapter(SelectNumberOfPlayersAdapter pa) {
         adapter = pa;
@@ -34,6 +36,7 @@ public class Players {
 
     public static void add(Player p) {
         PLAYERS.add(p);
+        ALIVE.add(p);
         adapter.notifyDataSetChanged();
     }
 
@@ -53,14 +56,26 @@ public class Players {
         adapter.notifyDataSetChanged();
     }
 
-    public static void kill(int pos) {
+    public static void killPlayer(int pos) {
         PLAYERS.get(pos).alive = false;
         adapter.notifyDataSetChanged();
     }
 
-    public static void revive(int pos) {
+    public static void kill(int pos) {
+        Player p = ALIVE.get(pos);
+        DEAD.add(p);
+        ALIVE.remove(pos);
+    }
+
+    public static void revivePlayer(int pos) {
         PLAYERS.get(pos).alive = true;
         adapter.notifyDataSetChanged();
+    }
+
+    public static void revive(int pos) {
+        Player p = DEAD.get(pos);
+        ALIVE.add(p);
+        DEAD.remove(pos);
     }
 
     public static boolean isAlive(int pos) {

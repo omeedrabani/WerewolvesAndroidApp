@@ -12,7 +12,9 @@ import android.widget.TextView;
 
 public class ModeratorScreen extends AppCompatActivity {
     public static RoleAdapter moderator_role_adapter_day;
+    public static RoleAdapter moderator_role_adapter_day_dead;
     public static RoleAdapter moderator_role_adapter_night;
+    public static RoleAdapter moderator_role_adapter_night_dead;
     public int theme;
     public int phase;
 
@@ -30,12 +32,18 @@ public class ModeratorScreen extends AppCompatActivity {
         // TODO: change background and text colors for night phase so the visual difference is easily apparent
 
         ListView moderator_day_view_role_list   = (ListView) findViewById(R.id.moderator_day_view_role_list);
+        ListView moderator_day_view_role_list_dead   = (ListView) findViewById(R.id.moderator_day_view_role_list_dead);
         ListView moderator_night_view_role_list = (ListView) findViewById(R.id.moderator_night_view_role_list);
+        ListView moderator_night_view_role_list_dead   = (ListView) findViewById(R.id.moderator_night_view_role_list_dead);
 
-        moderator_role_adapter_day = new RoleAdapter(this, true, true);
-        moderator_role_adapter_night = new RoleAdapter(this, true, false);
+        moderator_role_adapter_day = new RoleAdapter(this, true, true, true);
+        moderator_role_adapter_day_dead = new RoleAdapter(this, true, true, false);
+        moderator_role_adapter_night = new RoleAdapter(this, true, false, true);
+        moderator_role_adapter_night_dead = new RoleAdapter(this, true, false, false);
         moderator_day_view_role_list.setAdapter(moderator_role_adapter_day);
+        moderator_day_view_role_list_dead.setAdapter(moderator_role_adapter_day_dead);
         moderator_night_view_role_list.setAdapter(moderator_role_adapter_night);
+        moderator_night_view_role_list_dead.setAdapter(moderator_role_adapter_night_dead);
 
         final LinearLayout moderator_day_view   = (LinearLayout) findViewById(R.id.moderator_day_view);
         final LinearLayout moderator_night_view = (LinearLayout) findViewById(R.id.moderator_night_view);
@@ -54,8 +62,6 @@ public class ModeratorScreen extends AppCompatActivity {
         go_to_day_phase_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moderator_day_view.setVisibility(View.VISIBLE);
-                moderator_night_view.setVisibility(View.GONE);
                 Intent moderator_screen_intent = new Intent(context, ModeratorScreen.class);
                 moderator_screen_intent.putExtra("theme", R.style.AppTheme);
                 moderator_screen_intent.putExtra("phase", 0);
@@ -67,8 +73,6 @@ public class ModeratorScreen extends AppCompatActivity {
                 new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                moderator_day_view.setVisibility(View.GONE);
-                moderator_night_view.setVisibility(View.VISIBLE);
                 Intent moderator_screen_intent = new Intent(context, ModeratorScreen.class);
                 moderator_screen_intent.putExtra("theme", android.R.style.Theme_Black_NoTitleBar);
                 moderator_screen_intent.putExtra("phase", 1);

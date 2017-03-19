@@ -78,7 +78,7 @@ public class PlayerRoles extends AppCompatActivity {
             }
         }
 
-        final RoleAdapter roleAdapter = new RoleAdapter(this, false, false);
+        final RoleAdapter roleAdapter = new RoleAdapter(this, false, false, true);
         ListView l = (ListView)findViewById(R.id.view_role_list);
         l.setAdapter(roleAdapter);
     }

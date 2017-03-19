@@ -26,20 +26,27 @@ public class RoleAdapter extends BaseAdapter {
     private Context context;
     private boolean moderator;
     private boolean day_view;
-    //List<Players.Player> playerList = Players.PLAYERS;
+    private boolean alive;
+    private List<Players.Player> playerList;
 
-    public RoleAdapter(Context c, boolean moderator, boolean day_view) {
+    public RoleAdapter(Context c, boolean moderator, boolean day_view, boolean alive) {
         this.context   = c;
         this.moderator = moderator;
         this.day_view  = day_view;
+        this.alive = alive;
+        if (alive) {
+            playerList = Players.ALIVE;
+        } else {
+            playerList = Players.DEAD;
+        }
     }
 
     public int getCount() {
-        return Players.playerCount();
+        return playerList.size();
     }
 
     public Players.Player getItem(int pos) {
-        return Players.getPlayer(pos);
+        return playerList.get(pos);
     }
 
     public long getItemId(int pos) {
@@ -58,7 +65,7 @@ public class RoleAdapter extends BaseAdapter {
             Button undo_kill_player_button = (Button) v.findViewById(R.id.undo_kill_player_button);
             TextView view_player_role_textview = (TextView) v.findViewById(R.id.view_player_role_textview);
 
-            if (Players.isAlive(player_position)) {
+            if (alive) {
                 kill_player_button.setVisibility(View.VISIBLE);
                 undo_kill_player_button.setVisibility(View.GONE);
             }
@@ -72,7 +79,9 @@ public class RoleAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Players.kill(player_position);
                     ModeratorScreen.moderator_role_adapter_day.notifyDataSetChanged();
+                    ModeratorScreen.moderator_role_adapter_day_dead.notifyDataSetChanged();
                     ModeratorScreen.moderator_role_adapter_night.notifyDataSetChanged();
+                    ModeratorScreen.moderator_role_adapter_night_dead.notifyDataSetChanged();
                 }
             });
 
@@ -81,7 +90,9 @@ public class RoleAdapter extends BaseAdapter {
                 public void onClick(View v) {
                     Players.revive(player_position);
                     ModeratorScreen.moderator_role_adapter_day.notifyDataSetChanged();
+                    ModeratorScreen.moderator_role_adapter_day_dead.notifyDataSetChanged();
                     ModeratorScreen.moderator_role_adapter_night.notifyDataSetChanged();
+                    ModeratorScreen.moderator_role_adapter_night_dead.notifyDataSetChanged();
                 }
             });
 
@@ -105,7 +116,7 @@ public class RoleAdapter extends BaseAdapter {
             else {
                 view_role_button.setVisibility(View.GONE);
                 view_player_role_textview.setVisibility(View.VISIBLE);
-                view_player_role_textview.setText(Players.getPlayer(player_position).role);
+                view_player_role_textview.setText(playerList.get(player_position).role);
             }
         }
         else {
@@ -126,11 +137,11 @@ public class RoleAdapter extends BaseAdapter {
         }
 
         TextView t = (TextView)v.findViewById(R.id.view_role_player_name);
-        t.setText(Players.getPlayer(pos).name);
+        t.setText(playerList.get(player_position).name);
 
-        if (!Players.isAlive(player_position)){
-            t.setPaintFlags(t.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-        }
+//        if (!Players.isAlive(player_position)){
+//            t.setPaintFlags(t.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+//        }
 
         return v;
     }
