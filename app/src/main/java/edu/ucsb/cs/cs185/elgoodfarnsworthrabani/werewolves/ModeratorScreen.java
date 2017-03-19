@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 public class ModeratorScreen extends AppCompatActivity {
     public static RoleAdapter moderator_role_adapter_day;
@@ -75,6 +76,41 @@ public class ModeratorScreen extends AppCompatActivity {
             }
         });
 
+        final Button day_phase_script_button   = (Button) findViewById(R.id.day_phase_script_button);
+        final Button night_phase_script_button = (Button) findViewById(R.id.night_phase_script_button);
+
+        final TextView day_phase_script_textview = (TextView) findViewById(R.id.day_phase_script_textview);
+        final TextView night_phase_script_textview = (TextView) findViewById(R.id.night_phase_script_textview);
+
+        day_phase_script_button.setBackgroundColor(0xFFFFFFFF);
+
+        day_phase_script_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (day_phase_script_textview.getVisibility() == View.GONE) {
+                    day_phase_script_textview.setVisibility(View.VISIBLE);
+                    day_phase_script_button.setBackgroundColor(0xFFACACAC);
+                }
+                else {
+                    day_phase_script_textview.setVisibility(View.GONE);
+                    day_phase_script_button.setBackgroundColor(0xFFFFFFFF);
+                }
+            }
+        });
+
+        night_phase_script_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (night_phase_script_textview.getVisibility() == View.GONE) {
+                    night_phase_script_textview.setVisibility(View.VISIBLE);
+                    night_phase_script_button.setBackgroundColor(0xFFFFFFFF);
+                }
+                else {
+                    night_phase_script_textview.setVisibility(View.GONE);
+                    night_phase_script_button.setBackgroundColor(0xFFACACAC);
+                }
+            }
+        });
     }
 
 }

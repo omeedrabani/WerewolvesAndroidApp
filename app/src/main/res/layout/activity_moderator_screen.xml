@@ -40,6 +40,15 @@
             android:id="@+id/day_phase_script_button"
             />
 
+        <TextView
+            android:text="@string/day_phase_script_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/day_phase_script_textview"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:textSize="17sp" />
+
         <ListView
             android:id="@+id/moderator_day_view_role_list"
             android:orientation="vertical"
@@ -61,6 +70,7 @@
             android:text="@string/go_to_day_phase_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:id="@+id/go_to_day_phase_button"
             android:backgroundTint="@color/yellow" />
 
@@ -76,8 +86,18 @@
             android:text="@string/night_phase_script_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="true"
             android:id="@+id/night_phase_script_button"
             />
+
+        <TextView
+            android:text="@string/night_phase_script_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/night_phase_script_textview"
+            android:gravity="center_horizontal"
+            android:visibility="gone"
+            android:textSize="17sp" />
 
         <ListView
             android:id="@+id/moderator_night_view_role_list"
