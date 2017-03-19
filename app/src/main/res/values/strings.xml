@@ -28,6 +28,74 @@
     <string name="undo_kill_text">Undo Kill</string>
     <string name="night_phase_script_button_text">Night Phase Script</string>
     <string name="day_phase_script_button_text">Day Phase Script</string>
-    <string name="day_phase_script_text">\n\"Everyone please open your eyes\"\n\nTell the group if there were any deaths or saves from the previous night.\n\n\"Discuss who you think is a werewolf and decide who you would like to put on trial.\"\n\nMajority vote is necessary to kill a player that is put on trial.</string>
-    <string name="night_phase_script_text">\n\"Everyone please close your eyes\"\n\n\"Werewolves open your eyes\"\n\"Werewolves indicate who to kill\"\n\"Werewolves close your eyes\"\n\n\"Doctor open your eyes\"\n\"Doctor indicate who to save\"\n\"Doctor close your eyes\"\n\n\"Investigator open your eyes\"\n\"Investigator choose who to inspect\"\n\"Investigator close your eyes\"</string>
+    <string name="day_phase_script_text">
+        \n\"Everyone please open your eyes\"
+        \n\nTell the group if there were any deaths or saves from the previous night.
+        \n\n\"Discuss who you think is a werewolf and decide who you would like to put on trial.\"
+        \n\nMajority vote is necessary to kill a player that is put on trial.</string>
+    <string name="night_phase_script_text">
+        \n\"Everyone please close your eyes\"
+        \n\n\"Werewolves open your eyes\"\n\"Werewolves indicate who to kill\"
+        \n\"Werewolves close your eyes\"
+        \n\n\"Doctor open your eyes\"
+        \n\"Doctor indicate who to save\"
+        \n\"Doctor close your eyes\"
+        \n\n\"Investigator open your eyes\"
+        \n\"Investigator choose who to inspect\"
+        \n\"Investigator close your eyes\"</string>
+
+    <string name="rules_setup_title">Setup</string>
+    <string name="rules_setup_text">Assemble a group of players. An odd number is best, although not absolutely mandatory.
+        The game works best when there are 7+ players.
+        \nThe game proceeds in alternating night and day rounds. Begin with the Night Phase.</string>
+
+    <string name="rules_night_phase_title">The Night Phase</string>
+    <string name="rules_night_phase_text">At night, the moderator tells all the players to close their eyes. Everyone begins slapping their knees (or table) to cover up any noises of the night.
+
+        \nThe moderator instructs the Werewolves to open their eyes. The werewolves do so, and look around to recognize each other.
+        \nOn every night except the first night, the moderator instructs the werewolves to choose someone to kill. The werewolves silently agree on one villager (It\'s critical that they remain silent).
+        \nThe other players are sitting there with their eyes closed, and the werewolves don\'t want to give themselves away. Sign language is appropriate, or just pointing, nodding, raising eyebrows, and so on.
+        \nWhen the werewolves have agreed on a victim, and the moderator understands who they picked, the moderator tells the Werewolves to close their eyes.
+
+        \n\nNow, the moderator awakens the Doctor and asks the doctor who they would like to heal. The Doctor selects someone they\'d like to heal.
+        \nThe person chosen (which could be the Doctor him/herself) will survive if the werewolves had chosen to kill them.
+        \nIf someone was killed, and then saved by the Doctor, the moderator will let the village know by saying, \"Someone has been saved\", at the beginning of the Day Phase.
+        \nThe moderator then instructs the Doctor to close their eyes.
+
+        \n\nThe moderator wakes the Investigator and asks them indicate who they would like to inspect. The Investigator opens their eyes and silently points at another player.
+        \nThe moderator silently signs thumbs-up if the Investigator pointed at a Werewolf, and thumbs-down if the Investigator pointed at an innocent Townsperson or a Doctor.
+        \nThe moderator then instructs the Investigator to close their eyes.
+
+        \n\nAt the end of the Night Phase, the Moderator should toggle the phase back to the Day Phase and says \"Everyone please open your eyes.\"
+        \nThe moderator tells the village who has been killed. That person is immediately dead and out of the game. They do not reveal their identity.</string>
+
+    <string name="rules_day_phase_title">The Day Phase</string>
+    <string name="rules_day_phase_text">During the Day Phase, the moderator first tells the village if their was a death from the previous night, or if someone was saved by the doctor.
+        \nIf a player died, that player is out of the game and may not reveal their identity.
+        \nIf a player was saved, the moderator merely states that someone was saved and does not reveal who it was. The player that was saved remains in the game.
+
+        \n\nDuring the day, it is up to everyone in the village to discuss and learn who the Werewolves are. There are no restrictions on speech.
+        \nAny living player may say anything they want, whether it is the truth or a lie. Dead players may not speak.
+
+        \n\nDuring the day time there must be at least one trial. In order to put someone on trial, one person must indicate someone to be on trial.
+        \nOnce a second person agrees that said person should be on trial, then the trial begins.
+        \nThe initial person has 30 seconds to make their case as to why they think the person on trial is a Werewolf.
+        \nThe person on trial has 30 seconds to make defend why they are not a Werewolf.
+
+        \n\nAt the end of both speeches, all living villagers (including the person on trial) votes to kill or not kill the person on trial.
+        \nThumbs-up to kill, thumbs-down to not kill. There must be majority vote to kill someone on trial.
+        \n(For example, 5 out of 8 villagers must give thumbs-up to kill, 4 out of 8 is not majority)
+
+        \n\nIf the person on trial is killed, they are dead and out of the game.
+
+        \n\nYou then cycle on to the next Night Phase.</string>
+
+    <string name="rules_how_to_win_title">How To Win</string>
+    <string name="rules_how_to_win_text">In order for the Villagers (Doctor and Investigator included) to win, they must kill all Werewolves during the day time trials.
+        \nIn order for the Werewolves to win, there needs to be an equal number of Werewolves and Villagers remaining in the game.
+        \n(For example, 1 Werewolf and 1 Townsperson, 2 and 2, 3 and 3)</string>
+
+    <string name="rules_moderator_tips_title">Moderator Tips</string>
+    <string name="rules_moderator_tips_text">Continue to "wake up" the Doctor and Investigator during the Night Phase even if they are no longer alive.</string>
+
 </resources>
