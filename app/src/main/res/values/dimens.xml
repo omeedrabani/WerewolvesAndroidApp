@@ -12,6 +12,7 @@
     <dimen name="medium_text_size">20dp</dimen>
     <dimen name="large_text_size">30dp</dimen>
     <dimen name="button_padding">20dp</dimen>
+    <dimen name="thin_button_padding">14dp</dimen>
     <dimen name="drawable_button_padding">20dp</dimen>
     <dimen name="zero">28dp</dimen>
     <dimen name="small_avatar_size">80dp</dimen>

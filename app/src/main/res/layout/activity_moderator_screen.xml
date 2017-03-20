@@ -20,6 +20,7 @@
             android:text="@string/go_to_night_phase_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/button_padding"
             android:id="@+id/go_to_night_phase_button"
             android:backgroundTint="@color/gray"
             android:textColor="@color/white"
@@ -29,6 +30,7 @@
             android:text="@string/moderator_day_phase_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/button_padding"
             android:id="@+id/moderator_day_textview"
             android:gravity="center_horizontal"
             android:textSize="30sp" />
@@ -37,6 +39,8 @@
             android:text="@string/day_phase_script_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:padding="@dimen/button_padding"
             android:id="@+id/day_phase_script_button"
             />
 
@@ -55,6 +59,7 @@
             android:id="@+id/day_view_players"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/button_padding"
             android:gravity="center" >
 
             <Button
@@ -122,6 +127,7 @@
             android:text="@string/go_to_day_phase_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/button_padding"
             android:textAllCaps="true"
             android:id="@+id/go_to_day_phase_button"
             android:backgroundTint="@color/yellow" />
@@ -130,6 +136,7 @@
             android:text="@string/moderator_night_phase_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="@dimen/button_padding"
             android:id="@+id/moderator_night_textview"
             android:gravity="center_horizontal"
             android:textSize="30sp" />
@@ -138,7 +145,8 @@
             android:text="@string/night_phase_script_button_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textAllCaps="true"
+            android:padding="@dimen/button_padding"
+            android:textAllCaps="false"
             android:id="@+id/night_phase_script_button"
             />
 
@@ -155,6 +163,7 @@
         <LinearLayout
             android:orientation="horizontal"
             android:id="@+id/night_view_players"
+            android:padding="@dimen/button_padding"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center" >
@@ -163,6 +172,7 @@
                 android:text="Living Players"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/thin_button_padding"
                 android:layout_weight="1"
                 android:textAllCaps="true"
                 android:id="@+id/living_players_night_button"
@@ -172,6 +182,7 @@
                 android:text="Dead Players"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:padding="@dimen/thin_button_padding"
                 android:layout_weight="1"
                 android:textAllCaps="true"
                 android:id="@+id/dead_players_night_button"
