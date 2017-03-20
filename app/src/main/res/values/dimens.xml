@@ -14,4 +14,6 @@
     <dimen name="button_padding">20dp</dimen>
     <dimen name="drawable_button_padding">20dp</dimen>
     <dimen name="zero">28dp</dimen>
+    <dimen name="small_avatar_size">80dp</dimen>
+    <dimen name="large_avatar_size">140dp</dimen>
 </resources>
