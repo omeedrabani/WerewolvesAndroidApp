@@ -100,5 +100,6 @@
     <string name="rules_moderator_tips_text">Continue to "wake up" the Doctor and Investigator during the Night Phase even if they are no longer alive.</string>
     <string name="about_us_text">Meet Omeed, Jill, and Shelby. We created this application for our Human-Computer Interaction class here at the University of California, Santa Barbara during winter quarter 2017.
     \n\nWe hope this application can make your experience playing Werewolves much more enjoyable. Enjoy!</string>
+    <string name="rules_roles_title">Player Roles</string>
 
 </resources>
