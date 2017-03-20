@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -25,11 +26,13 @@ public class PlayerRoleFragment extends DialogFragment {
         final TextView player_name_textview     = (TextView) player_role_fragment_view.findViewById(R.id.player_name_textview);
         final TextView player_role_textview     = (TextView) player_role_fragment_view.findViewById(R.id.player_role_textview);
         final TextView verify_identity_textview = (TextView) player_role_fragment_view.findViewById(R.id.verify_identity_textview);
+        final ImageView player_role_imageview = (ImageView) player_role_fragment_view.findViewById(R.id.player_role_avatar);
 
         dismiss_button.setVisibility(View.GONE);
         player_role_textview.setVisibility(View.GONE);
+        player_role_imageview.setVisibility(View.GONE);
 
-        int player_id = getArguments().getInt("player_id");
+        final int player_id = getArguments().getInt("player_id");
         boolean moderator = getArguments().getBoolean("moderator");
         boolean moderator_view_roles = getArguments().getBoolean("moderator_view_roles");
 
@@ -40,6 +43,7 @@ public class PlayerRoleFragment extends DialogFragment {
                 String player_name_textview_string = "Player: " + Players.getPlayer(player_id).name;
                 player_name_textview.setText(player_name_textview_string);
                 player_role_textview.setText(Players.getPlayer(player_id).role);
+                setAvatar(Players.getPlayer(player_id).role, player_role_imageview);
 
                 yes_button.setVisibility(View.GONE);
                 no_button.setVisibility(View.GONE);
@@ -47,6 +51,7 @@ public class PlayerRoleFragment extends DialogFragment {
 
                 player_role_textview.setVisibility(View.VISIBLE);
                 dismiss_button.setVisibility(View.VISIBLE);
+                player_role_imageview.setVisibility(View.VISIBLE);
             }
             else {
                 String player_name_textview_string = "Moderator";
@@ -67,6 +72,7 @@ public class PlayerRoleFragment extends DialogFragment {
             String player_name_textview_string = "Player: " + Players.getPlayer(player_id).name;
             player_name_textview.setText(player_name_textview_string);
             player_role_textview.setText(Players.getPlayer(player_id).role);
+            setAvatar(Players.getPlayer(player_id).role, player_role_imageview);
 
             yes_button.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -77,6 +83,7 @@ public class PlayerRoleFragment extends DialogFragment {
 
                     player_role_textview.setVisibility(View.VISIBLE);
                     dismiss_button.setVisibility(View.VISIBLE);
+                    player_role_imageview.setVisibility(View.VISIBLE);
                 }
             });
         }
@@ -85,6 +92,17 @@ public class PlayerRoleFragment extends DialogFragment {
         dismiss_button.setOnClickListener(new DismissDialogListener());
 
         return player_role_fragment_view;
+    }
+
+    public void setAvatar(String role, ImageView i){
+        if(role == "Doctor (Town)")
+            i.setImageResource(R.drawable.doctor_avatar);
+        else if(role == "Investigator (Town)")
+            i.setImageResource(R.drawable.investigator_avatar);
+        else if(role == "Werewolf")
+            i.setImageResource(R.drawable.werewolf_avatar);
+        else
+            i.setImageResource(R.drawable.villager_avatar);
     }
 
     public class DismissDialogListener implements View.OnClickListener {
