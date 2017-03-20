@@ -10,8 +10,20 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:gravity="center_vertical"
     tools:context="edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves.StartScreen">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="20dp"
+        android:paddingTop="100dp">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/large_avatar_size"
+            android:src="@drawable/werewolf_avatar"/>
+
+    </RelativeLayout>
 
     <Button
         android:layout_width="match_parent"
