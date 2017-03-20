@@ -1,7 +1,10 @@
 package edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves;
 
+import android.util.Log;
+
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 
 public class Players {
@@ -10,6 +13,8 @@ public class Players {
     public static final String DOCTOR       = "Doctor (Town)";
     public static final String TOWNSPERSON  = "Townsperson";
 
+    public static int player_unique_id = 0;
+
     public static int number_of_werewolves;
     public static int number_of_investigators;
     public static int number_of_doctors;
@@ -17,69 +22,100 @@ public class Players {
 
     public static boolean refresh_roles = false;
 
-    public static SelectNumberOfPlayersAdapter adapter;
     public static final List<Player> PLAYERS = new ArrayList<Player>();
     public static final List<Player> ALIVE = new ArrayList<Player>();
     public static final List<Player> DEAD = new ArrayList<Player>();
-
-    public static void setAdapter(SelectNumberOfPlayersAdapter pa) {
-        adapter = pa;
-    }
 
     public static int playerCount(){
         return PLAYERS.size();
     }
 
-    public static Player getPlayer(int pos){
-        return PLAYERS.get(pos);
+    public static Player getPlayer(int player_id){
+        for (Player p : PLAYERS) {
+            if (p.id == player_id)
+                return p;
+        }
+
+        return null;
+    }
+
+    static Player getPlayerFromIndex(int index) {
+        return PLAYERS.get(index);
     }
 
     public static void add(Player p) {
         PLAYERS.add(p);
         ALIVE.add(p);
-        adapter.notifyDataSetChanged();
     }
 
-    public static void remove(int pos) {
-        PLAYERS.remove(pos);
-        adapter.notifyDataSetChanged();
+    public static void remove(int player_id) {
+        Iterator<Player> iter = PLAYERS.iterator();
+        Iterator<Player> iterAlive = ALIVE.iterator();
+        Iterator<Player> iterDead = DEAD.iterator();
+
+        while (iter.hasNext()) {
+            if (iter.next().id == player_id) {
+                iter.remove();
+                break;
+            }
+        }
+
+        while(iterAlive.hasNext()) {
+            if (iterAlive.next().id == player_id) {
+                iterAlive.remove();
+                break;
+            }
+        }
+
+        while(iterDead.hasNext()) {
+            if (iterDead.next().id == player_id) {
+                iterDead.remove();
+                break;
+            }
+        }
     }
 
 
-    public static void setName(Player p, String name) {
-        p.name = name;
-        adapter.notifyDataSetChanged();
+    public static void setName(int player_id, String name) {
+        for (Player p : PLAYERS) {
+            if (p.id == player_id) {
+                PLAYERS.get(PLAYERS.indexOf(p)).name = name;
+                break;
+            }
+        }
     }
 
-    public static void setRole(int pos, String role) {
-        PLAYERS.get(pos).role = role;
-        adapter.notifyDataSetChanged();
+    public static void setRole(int player_id, String role) {
+        for (Player p : PLAYERS) {
+            if (p.id == player_id) {
+                PLAYERS.get(PLAYERS.indexOf(p)).role = role;
+                break;
+            }
+        }
     }
 
-    public static void killPlayer(int pos) {
-        PLAYERS.get(pos).alive = false;
-        adapter.notifyDataSetChanged();
+    public static void setRoleFromIndex(int index, String role) {
+        PLAYERS.get(index).role = role;
     }
 
-    public static void kill(int pos) {
-        Player p = ALIVE.get(pos);
-        DEAD.add(p);
-        ALIVE.remove(pos);
+    public static void kill(int player_id) {
+        for (Player p : ALIVE) {
+            if (p.id == player_id) {
+                DEAD.add(p);
+                ALIVE.remove(ALIVE.indexOf(p));
+                break;
+            }
+        }
     }
 
-    public static void revivePlayer(int pos) {
-        PLAYERS.get(pos).alive = true;
-        adapter.notifyDataSetChanged();
-    }
-
-    public static void revive(int pos) {
-        Player p = DEAD.get(pos);
-        ALIVE.add(p);
-        DEAD.remove(pos);
-    }
-
-    public static boolean isAlive(int pos) {
-        return PLAYERS.get(pos).alive;
+    public static void revive(int player_id) {
+        for (Player p : DEAD) {
+            if (p.id == player_id) {
+                ALIVE.add(p);
+                DEAD.remove(DEAD.indexOf(p));
+                break;
+            }
+        }
     }
 
     static void clearPlayerRoles() {
@@ -91,9 +127,13 @@ public class Players {
 
     //could be used when ending game before going back to main screen
     public static void clear() {
-        PLAYERS.clear();
-        if (adapter != null)
-            adapter.notifyDataSetChanged();
+        ArrayList<Integer> player_ids_to_remove = new ArrayList<Integer>();
+        for (Player p : PLAYERS) {
+            player_ids_to_remove.add(p.id);
+        }
+        for (int p_id : player_ids_to_remove) {
+            Players.remove(p_id);
+        }
     }
 
     public static boolean verifyInput(){
@@ -108,10 +148,12 @@ public class Players {
         public String name;
         public String role;
         public boolean alive;
+        public int id;
 
         public Player(boolean quick_add) {
             this.alive = true;
-            this.name = quick_add ? (Players.playerCount() + 1 ) + "" : "";
+            this.name = quick_add ? (Players.player_unique_id + 1) + "" : "";
+            this.id = Players.player_unique_id++;
         }
     }
 }

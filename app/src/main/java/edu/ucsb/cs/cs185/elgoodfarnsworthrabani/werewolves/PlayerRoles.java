@@ -33,7 +33,7 @@ public class PlayerRoles extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putInt("player_position", 0);
+                bundle.putInt("player_id", 0);
                 bundle.putBoolean("moderator", true);
                 bundle.putBoolean("moderator_view_roles", false);
                 PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
@@ -47,32 +47,32 @@ public class PlayerRoles extends AppCompatActivity {
 
             while (number_of_werewolves > 0) {
                 player_position = r.nextInt(player_count);
-                if (Players.getPlayer(player_position).role == null) {
-                    Players.setRole(player_position, Players.WEREWOLF);
+                if (Players.getPlayerFromIndex(player_position).role == null) {
+                    Players.setRoleFromIndex(player_position, Players.WEREWOLF);
                     number_of_werewolves--;
                 }
             }
 
             while (number_of_investigators > 0) {
                 player_position = r.nextInt(player_count);
-                if (Players.getPlayer(player_position).role == null) {
-                    Players.setRole(player_position, Players.INVESTIGATOR);
+                if (Players.getPlayerFromIndex(player_position).role == null) {
+                    Players.setRoleFromIndex(player_position, Players.INVESTIGATOR);
                     number_of_investigators--;
                 }
             }
 
             while (number_of_doctors > 0) {
                 player_position = r.nextInt(player_count);
-                if (Players.getPlayer(player_position).role == null) {
-                    Players.setRole(player_position, Players.DOCTOR);
+                if (Players.getPlayerFromIndex(player_position).role == null) {
+                    Players.setRoleFromIndex(player_position, Players.DOCTOR);
                     number_of_doctors--;
                 }
             }
 
             while (number_of_townspersons > 0) {
                 player_position = r.nextInt(player_count);
-                if (Players.getPlayer(player_position).role == null) {
-                    Players.setRole(player_position, Players.TOWNSPERSON);
+                if (Players.getPlayerFromIndex(player_position).role == null) {
+                    Players.setRoleFromIndex(player_position, Players.TOWNSPERSON);
                     number_of_townspersons--;
                 }
             }

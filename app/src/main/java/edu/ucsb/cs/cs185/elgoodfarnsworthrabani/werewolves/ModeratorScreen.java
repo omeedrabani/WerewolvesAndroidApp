@@ -29,7 +29,7 @@ public class ModeratorScreen extends AppCompatActivity {
 
         Players.refresh_roles = false;
 
-        // TODO: change background and text colors for night phase so the visual difference is easily apparent
+        // TODO: don't forget to add a "finish game" button and have that reset all the player lives and notify the adapters that data has changed
 
         ListView moderator_day_view_role_list   = (ListView) findViewById(R.id.moderator_day_view_role_list);
         ListView moderator_day_view_role_list_dead   = (ListView) findViewById(R.id.moderator_day_view_role_list_dead);

@@ -4,6 +4,7 @@ import android.app.DialogFragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,7 +29,7 @@ public class PlayerRoleFragment extends DialogFragment {
         dismiss_button.setVisibility(View.GONE);
         player_role_textview.setVisibility(View.GONE);
 
-        int player_position = getArguments().getInt("player_position");
+        int player_id = getArguments().getInt("player_id");
         boolean moderator = getArguments().getBoolean("moderator");
         boolean moderator_view_roles = getArguments().getBoolean("moderator_view_roles");
 
@@ -36,9 +37,9 @@ public class PlayerRoleFragment extends DialogFragment {
 
         if (moderator) {
             if (moderator_view_roles) {
-                String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;
+                String player_name_textview_string = "Player: " + Players.getPlayer(player_id).name;
                 player_name_textview.setText(player_name_textview_string);
-                player_role_textview.setText(Players.getPlayer(player_position).role);
+                player_role_textview.setText(Players.getPlayer(player_id).role);
 
                 yes_button.setVisibility(View.GONE);
                 no_button.setVisibility(View.GONE);
@@ -63,9 +64,9 @@ public class PlayerRoleFragment extends DialogFragment {
             }
         }
         else {
-            String player_name_textview_string = "Player: " + Players.getPlayer(player_position).name;
+            String player_name_textview_string = "Player: " + Players.getPlayer(player_id).name;
             player_name_textview.setText(player_name_textview_string);
-            player_role_textview.setText(Players.getPlayer(player_position).role);
+            player_role_textview.setText(Players.getPlayer(player_id).role);
 
             yes_button.setOnClickListener(new View.OnClickListener() {
                 @Override

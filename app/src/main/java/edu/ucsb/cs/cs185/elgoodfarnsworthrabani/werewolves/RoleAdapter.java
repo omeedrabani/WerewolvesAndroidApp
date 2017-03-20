@@ -34,10 +34,15 @@ public class RoleAdapter extends BaseAdapter {
         this.moderator = moderator;
         this.day_view  = day_view;
         this.alive = alive;
-        if (alive) {
-            playerList = Players.ALIVE;
-        } else {
-            playerList = Players.DEAD;
+        if (moderator) {
+            if (alive) {
+                this.playerList = Players.ALIVE;
+            } else {
+                this.playerList = Players.DEAD;
+            }
+        }
+        else {
+            this.playerList = Players.PLAYERS;
         }
     }
 
@@ -46,6 +51,7 @@ public class RoleAdapter extends BaseAdapter {
     }
 
     public Players.Player getItem(int pos) {
+        this.notifyDataSetChanged();
         return playerList.get(pos);
     }
 
@@ -54,7 +60,7 @@ public class RoleAdapter extends BaseAdapter {
     }
 
     public View getView(int pos, View v, ViewGroup parent) {
-        final int player_position = pos;
+        final int player_id = getItem(pos).id;
         Activity activity = (Activity) parent.getContext();
         final FragmentManager fragment_manager = activity.getFragmentManager();
 
@@ -77,7 +83,7 @@ public class RoleAdapter extends BaseAdapter {
             kill_player_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Players.kill(player_position);
+                    Players.kill(player_id);
                     ModeratorScreen.moderator_role_adapter_day.notifyDataSetChanged();
                     ModeratorScreen.moderator_role_adapter_day_dead.notifyDataSetChanged();
                     ModeratorScreen.moderator_role_adapter_night.notifyDataSetChanged();
@@ -88,7 +94,7 @@ public class RoleAdapter extends BaseAdapter {
             undo_kill_player_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Players.revive(player_position);
+                    Players.revive(player_id);
                     ModeratorScreen.moderator_role_adapter_day.notifyDataSetChanged();
                     ModeratorScreen.moderator_role_adapter_day_dead.notifyDataSetChanged();
                     ModeratorScreen.moderator_role_adapter_night.notifyDataSetChanged();
@@ -104,7 +110,7 @@ public class RoleAdapter extends BaseAdapter {
                     @Override
                     public void onClick(View v) {
                         Bundle bundle = new Bundle();
-                        bundle.putInt("player_position", player_position);
+                        bundle.putInt("player_id", player_id);
                         bundle.putBoolean("moderator", true);
                         bundle.putBoolean("moderator_view_roles", true);
                         PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
@@ -116,7 +122,7 @@ public class RoleAdapter extends BaseAdapter {
             else {
                 view_role_button.setVisibility(View.GONE);
                 view_player_role_textview.setVisibility(View.VISIBLE);
-                view_player_role_textview.setText(playerList.get(player_position).role);
+                view_player_role_textview.setText(Players.getPlayer(player_id).role);
             }
         }
         else {
@@ -127,7 +133,7 @@ public class RoleAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View v) {
                     Bundle bundle = new Bundle();
-                    bundle.putInt("player_position", player_position);
+                    bundle.putInt("player_id", player_id);
                     bundle.putBoolean("moderator", false);
                     PlayerRoleFragment player_role_fragment = new PlayerRoleFragment();
                     player_role_fragment.setArguments(bundle);
@@ -137,11 +143,7 @@ public class RoleAdapter extends BaseAdapter {
         }
 
         TextView t = (TextView)v.findViewById(R.id.view_role_player_name);
-        t.setText(playerList.get(player_position).name);
-
-//        if (!Players.isAlive(player_position)){
-//            t.setPaintFlags(t.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
-//        }
+        t.setText(Players.getPlayer(player_id).name);
 
         return v;
     }
