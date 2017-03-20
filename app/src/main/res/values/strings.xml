@@ -28,6 +28,7 @@
     <string name="undo_kill_text">Undo Kill</string>
     <string name="night_phase_script_button_text">Night Phase Script</string>
     <string name="day_phase_script_button_text">Day Phase Script</string>
+    <string name="finish_game">Finish Game</string>
     <string name="day_phase_script_text">
         \n\"Everyone please open your eyes\"
         \n\nTell the group if there were any deaths or saves from the previous night.

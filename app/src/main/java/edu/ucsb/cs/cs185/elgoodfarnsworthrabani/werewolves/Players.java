@@ -118,6 +118,17 @@ public class Players {
         }
     }
 
+    public static void reviveAllPlayers() {
+        for (Player p : PLAYERS) {
+            p.alive = true;
+        }
+        for (Player p : DEAD) {
+            ALIVE.add(p);
+        }
+        DEAD.clear();
+    }
+
+
     static void clearPlayerRoles() {
         for (Player p : PLAYERS) {
             p.role = null;
@@ -134,6 +145,7 @@ public class Players {
         for (int p_id : player_ids_to_remove) {
             Players.remove(p_id);
         }
+        Players.player_unique_id = 0;
     }
 
     public static boolean verifyInput(){

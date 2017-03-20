@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -178,6 +181,25 @@ public class ModeratorScreen extends AppCompatActivity {
                 night_view_dead_players.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.finish_game, menu);
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.finish_game_button:
+                Players.reviveAllPlayers();
+                Intent finish_intent = new Intent(this, StartScreen.class);
+                startActivity(finish_intent);
+                break;
+
+        }
+        return true;
     }
 
 }
