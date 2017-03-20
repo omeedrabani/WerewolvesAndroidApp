@@ -7,14 +7,14 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:gravity="center" >
+    android:gravity="center_horizontal" >
 
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <LinearLayout
         android:orientation="vertical"
         android:id="@+id/moderator_day_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center" >
+        android:gravity="center_horizontal" >
 
         <Button
             android:text="@string/go_to_night_phase_text"
@@ -47,33 +47,66 @@
             android:id="@+id/day_phase_script_textview"
             android:gravity="center_horizontal"
             android:visibility="gone"
+            android:paddingBottom="@dimen/text_size"
             android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Living Players"
-            android:textStyle="bold"
-            android:textSize="30sp"/>
-        <ListView
-            android:id="@+id/moderator_day_view_role_list"
-            android:orientation="vertical"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/day_view_players"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"/>
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dead Players"
-            android:textStyle="bold"
-            android:textSize="30sp"/>
-        <ListView
-            android:id="@+id/moderator_day_view_role_list_dead"
+            <Button
+                android:text="Living Players"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/living_players_day_button"
+                />
+
+            <Button
+                android:text="Dead Players"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:id="@+id/dead_players_day_button"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
+            android:id="@+id/day_view_alive_players"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"/>
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <ListView
+                android:id="@+id/moderator_day_view_role_list"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:id="@+id/day_view_dead_players"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <ListView
+                android:id="@+id/moderator_day_view_role_list_dead"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -83,7 +116,7 @@
         android:id="@+id/moderator_night_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center" >
+        android:gravity="center_horizontal" >
 
         <Button
             android:text="@string/go_to_day_phase_text"
@@ -116,33 +149,69 @@
             android:id="@+id/night_phase_script_textview"
             android:gravity="center_horizontal"
             android:visibility="gone"
+            android:paddingBottom="@dimen/text_size"
             android:textSize="17sp" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Living Players"
-            android:textStyle="bold"
-            android:textSize="30sp"/>
-        <ListView
-            android:id="@+id/moderator_night_view_role_list"
-            android:orientation="vertical"
+        <LinearLayout
+            android:orientation="horizontal"
+            android:id="@+id/night_view_players"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"/>
+            android:layout_height="wrap_content"
+            android:gravity="center" >
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dead Players"
-            android:textStyle="bold"
-            android:textSize="30sp"/>
-        <ListView
-            android:id="@+id/moderator_night_view_role_list_dead"
+            <Button
+                android:text="Living Players"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:id="@+id/living_players_night_button"
+                />
+
+            <Button
+                android:text="Dead Players"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textAllCaps="true"
+                android:id="@+id/dead_players_night_button"
+                />
+
+        </LinearLayout>
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
             android:orientation="vertical"
+            android:id="@+id/night_view_alive_players"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="0.25"/>
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <ListView
+                android:id="@+id/moderator_night_view_role_list"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
+
+
+        <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            android:orientation="vertical"
+            android:id="@+id/night_view_dead_players"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" >
+
+            <ListView
+                android:id="@+id/moderator_night_view_role_list_dead"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.25"/>
+
+        </LinearLayout>
 
     </LinearLayout>
 

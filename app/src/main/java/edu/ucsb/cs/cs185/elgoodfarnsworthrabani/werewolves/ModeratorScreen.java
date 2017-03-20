@@ -87,6 +87,7 @@ public class ModeratorScreen extends AppCompatActivity {
         final TextView night_phase_script_textview = (TextView) findViewById(R.id.night_phase_script_textview);
 
         day_phase_script_button.setBackgroundColor(0xFFFFFFFF);
+        night_phase_script_button.setBackgroundColor(0xFFFFFFFF);
 
         day_phase_script_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,12 +108,74 @@ public class ModeratorScreen extends AppCompatActivity {
             public void onClick(View v) {
                 if (night_phase_script_textview.getVisibility() == View.GONE) {
                     night_phase_script_textview.setVisibility(View.VISIBLE);
-                    night_phase_script_button.setBackgroundColor(0xFFFFFFFF);
+                    night_phase_script_button.setBackgroundColor(0xFFACACAC);
                 }
                 else {
                     night_phase_script_textview.setVisibility(View.GONE);
-                    night_phase_script_button.setBackgroundColor(0xFFACACAC);
+                    night_phase_script_button.setBackgroundColor(0xFFFFFFFF);
                 }
+            }
+        });
+
+
+        final Button living_players_day_button   = (Button) findViewById(R.id.living_players_day_button);
+        final Button dead_players_day_button     = (Button) findViewById(R.id.dead_players_day_button);
+        final Button living_players_night_button = (Button) findViewById(R.id.living_players_night_button);
+        final Button dead_players_night_button   = (Button) findViewById(R.id.dead_players_night_button);
+
+        final LinearLayout day_view_alive_players   = (LinearLayout) findViewById(R.id.day_view_alive_players);
+        final LinearLayout day_view_dead_players    = (LinearLayout) findViewById(R.id.day_view_dead_players);
+        final LinearLayout night_view_alive_players = (LinearLayout) findViewById(R.id.night_view_alive_players);
+        final LinearLayout night_view_dead_players  = (LinearLayout) findViewById(R.id.night_view_dead_players);
+
+        day_view_alive_players.setVisibility(View.VISIBLE);
+        day_view_dead_players.setVisibility(View.GONE);
+        night_view_alive_players.setVisibility(View.VISIBLE);
+        night_view_dead_players.setVisibility(View.GONE);
+
+        living_players_day_button.setBackgroundColor(0xFFACACAC);
+        dead_players_day_button.setBackgroundColor(0xFFFFFFFF);
+
+        living_players_night_button.setBackgroundColor(0xFFACACAC);
+        dead_players_night_button.setBackgroundColor(0xFFFFFFFF);
+
+        living_players_day_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                living_players_day_button.setBackgroundColor(0xFFACACAC);
+                dead_players_day_button.setBackgroundColor(0xFFFFFFFF);
+                day_view_alive_players.setVisibility(View.VISIBLE);
+                day_view_dead_players.setVisibility(View.GONE);
+            }
+        });
+
+        dead_players_day_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                living_players_day_button.setBackgroundColor(0xFFFFFFFF);
+                dead_players_day_button.setBackgroundColor(0xFFACACAC);
+                day_view_alive_players.setVisibility(View.GONE);
+                day_view_dead_players.setVisibility(View.VISIBLE);
+            }
+        });
+
+        living_players_night_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                living_players_night_button.setBackgroundColor(0xFFACACAC);
+                dead_players_night_button.setBackgroundColor(0xFFFFFFFF);
+                night_view_alive_players.setVisibility(View.VISIBLE);
+                night_view_dead_players.setVisibility(View.GONE);
+            }
+        });
+
+        dead_players_night_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                living_players_night_button.setBackgroundColor(0xFFFFFFFF);
+                dead_players_night_button.setBackgroundColor(0xFFACACAC);
+                night_view_alive_players.setVisibility(View.GONE);
+                night_view_dead_players.setVisibility(View.VISIBLE);
             }
         });
     }
