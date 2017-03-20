@@ -10,39 +10,36 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:gravity="center_vertical"
     tools:context="edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves.StartScreen">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TODO:
-        -better button images
-        -fix button layout
-        -make the new game button the largest, rules button medium sized, about us button should be tiny
-        -make the (overall) app design not so generic/ugly"
-        android:id="@+id/textView" />
-
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@android:drawable/btn_star_big_on"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/large_button_height"
         android:text="@string/new_game_button_text"
         android:textAllCaps="false"
+        android:textSize="@dimen/large_text_size"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/white"
         android:id="@+id/new_game_button" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@android:drawable/btn_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/medium_button_height"
         android:text="@string/rules_button_text"
         android:textAllCaps="false"
+        android:textSize="@dimen/medium_text_size"
+        android:backgroundTint="@color/lighter_gray"
+        android:textColor="@color/white"
         android:id="@+id/rules_button" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableTop="@android:drawable/btn_default"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/small_button_height"
         android:text="@string/about_us_button_text"
         android:textAllCaps="false"
+        android:textSize="@dimen/small_text_size"
+        android:backgroundTint="@color/lightest_gray"
+        android:textColor="@color/white"
         android:id="@+id/about_us_button" />
 </LinearLayout>

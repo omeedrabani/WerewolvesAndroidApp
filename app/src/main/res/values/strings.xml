@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Werewolves</string>
-    <string name="new_game_button_text">New Game!</string>
-    <string name="rules_button_text">Rules + Player Roles</string>
+    <string name="new_game_button_text">New Game</string>
+    <string name="rules_button_text">Rules and Player Roles</string>
     <string name="about_us_button_text">About Us</string>
     <string name="continue_text">Continue</string>
     <string name="view_role_text">View Role</string>

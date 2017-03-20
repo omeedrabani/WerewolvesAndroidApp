@@ -6,7 +6,10 @@
     <color name="green">#05da2c</color>
     <color name="red">#d50000</color>
     <color name="gray">#5c5c5c</color>
+    <color name="lighter_gray">#777676</color>
+    <color name="lightest_gray">#969696</color>
     <color name="yellow">#fde000</color>
     <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
 
 </resources>
