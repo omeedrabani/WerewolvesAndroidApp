@@ -77,13 +77,26 @@
         android:textStyle="bold"
         android:id="@+id/players_error_message" />
 
-    <ListView
-        android:id="@+id/list"
+    <!--<ListView-->
+        <!--android:id="@+id/list"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_weight="4"-->
+        <!--android:descendantFocusability="afterDescendants"-->
+        <!--android:windowSoftInputMode="adjustPan" />-->
+
+    <ScrollView
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_width="fill_parent"
-        android:layout_weight="4"
-        android:descendantFocusability="afterDescendants"
-        android:windowSoftInputMode="adjustPan" />
+        android:layout_weight="1">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:id="@+id/scrollable_layout"
+            android:padding="20dp">
+        </LinearLayout>
+    </ScrollView>
 
     <Button
         android:layout_width="match_parent"
@@ -93,5 +106,6 @@
         android:tint="@android:color/white"
         android:windowSoftInputMode="adjustPan"
         android:layout_marginBottom="@dimen/text_size" />
+
 
 </LinearLayout>
