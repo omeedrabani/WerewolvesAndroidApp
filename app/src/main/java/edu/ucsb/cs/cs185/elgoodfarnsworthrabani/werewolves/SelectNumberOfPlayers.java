@@ -102,11 +102,12 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
 
         final LinearLayout ll = new LinearLayout(c);
         ll.setOrientation(LinearLayout.HORIZONTAL);
-        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.WRAP_CONTENT);
+        LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,LayoutParams.MATCH_PARENT);
         ll.setLayoutParams(params);
+        ll.setPadding(0,10,0,10);
 
         final EditText et = new EditText(c);
-        LayoutParams et_params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.WRAP_CONTENT);
+        LayoutParams et_params = new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT);
         et_params.weight = 5.0f;
         et.setLayoutParams(et_params);
         et.setInputType(InputType.TYPE_CLASS_TEXT);
@@ -132,6 +133,7 @@ public class SelectNumberOfPlayers extends AppCompatActivity {
         Button button = new Button(c);
         LayoutParams button_params = new LayoutParams((int) getResources().getDimension(R.dimen.half_button_width), LayoutParams.WRAP_CONTENT);
         button.setLayoutParams(button_params);
+        button.setPadding(0,40,0,0);
         Drawable top = ContextCompat.getDrawable(c, android.R.drawable.ic_delete);
         button.setCompoundDrawablesWithIntrinsicBounds(null, top , null, null);
         button.setOnClickListener(new View.OnClickListener() {

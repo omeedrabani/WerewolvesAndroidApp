@@ -21,6 +21,10 @@
         android:text="@string/clear_all_players_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:textSize="@dimen/small_text_size"
+        android:textColor="@color/gray"
+        android:padding="@dimen/button_padding"
         android:id="@+id/clear_all_players_button" />
 
     <TextView
@@ -58,8 +62,10 @@
             android:id="@+id/number_of_players_textview" />
 
         <Button
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/half_button_width"
             android:layout_height="wrap_content"
+            android:paddingTop="@dimen/drawable_button_padding"
+            android:drawablePadding="-10dp"
             android:drawableTop="@android:drawable/ic_input_add"
             android:id="@+id/add_button"
             android:tint="@android:color/white" />
@@ -101,9 +107,13 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:padding="@dimen/button_padding"
+        android:textAllCaps="false"
         android:text="@string/continue_text"
         android:id="@+id/finish_number_of_players_button"
-        android:tint="@android:color/white"
+        android:backgroundTint="@color/gray"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size"
         android:windowSoftInputMode="adjustPan"
         android:layout_marginBottom="@dimen/text_size" />
 
