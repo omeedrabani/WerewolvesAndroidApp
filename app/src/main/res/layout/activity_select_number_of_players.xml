@@ -1,120 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_select_number_of_players"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves.SelectNumberOfPlayers">
-
-    <!--<Space-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1" />-->
-
-    <Button
-        android:text="@string/clear_all_players_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:textSize="@dimen/small_text_size"
-        android:textColor="@color/gray"
-        android:padding="@dimen/button_padding"
-        android:id="@+id/clear_all_players_button" />
-
-    <TextView
-        android:text="@string/select_players_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/select_players_description_text"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:textSize="24sp"/>
-
-    <TextView
-        android:text="@string/not_including_mod_text"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/not_including_mod_textview"
-        android:gravity="center"
-        android:layout_gravity="center_vertical"
-        android:textSize="16sp"/>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:orientation="horizontal"
+        android:id="@+id/activity_select_number_of_players"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        tools:context="edu.ucsb.cs.cs185.elgoodfarnsworthrabani.werewolves.SelectNumberOfPlayers">
+
+        <Button
+            android:text="@string/clear_all_players_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAllCaps="false"
+            android:textSize="@dimen/small_text_size"
+            android:textColor="@color/gray"
+            android:padding="@dimen/button_padding"
+            android:id="@+id/clear_all_players_button" />
+
+        <TextView
+            android:text="@string/select_players_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/select_players_description_text"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="24sp"/>
+
+        <TextView
+            android:text="@string/not_including_mod_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/not_including_mod_textview"
+            android:gravity="center"
+            android:layout_gravity="center_vertical"
+            android:textSize="16sp"/>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:id="@+id/number_of_players_textview" />
+
+            <Button
+                android:layout_width="@dimen/half_button_width"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/drawable_button_padding"
+                android:drawablePadding="-10dp"
+                android:drawableTop="@android:drawable/ic_input_add"
+                android:id="@+id/add_button"
+                android:tint="@android:color/white" />
+
+        </LinearLayout>
 
         <TextView
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
             android:gravity="center"
-            android:textSize="30sp"
+            android:text="@string/players_error_message_text"
+            android:textColor="@color/red"
+            android:textSize="20sp"
             android:textStyle="bold"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:id="@+id/number_of_players_textview" />
+            android:id="@+id/players_error_message" />
+
+        <!--<ListView-->
+            <!--android:id="@+id/list"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_weight="4"-->
+            <!--android:descendantFocusability="afterDescendants"-->
+            <!--android:windowSoftInputMode="adjustPan" />-->
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:id="@+id/scrollable_layout"
+                android:padding="20dp">
+            </LinearLayout>
+        </ScrollView>
 
         <Button
-            android:layout_width="@dimen/half_button_width"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/drawable_button_padding"
-            android:drawablePadding="-10dp"
-            android:drawableTop="@android:drawable/ic_input_add"
-            android:id="@+id/add_button"
-            android:tint="@android:color/white" />
+            android:padding="@dimen/button_padding"
+            android:textAllCaps="false"
+            android:text="@string/continue_text"
+            android:id="@+id/finish_number_of_players_button"
+            android:backgroundTint="@color/gray"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size"
+            android:windowSoftInputMode="adjustPan" />
+
 
     </LinearLayout>
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center_horizontal"
-        android:gravity="center"
-        android:text="@string/players_error_message_text"
-        android:textColor="@color/red"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:id="@+id/players_error_message" />
-
-    <!--<ListView-->
-        <!--android:id="@+id/list"-->
-        <!--android:layout_height="0dp"-->
-        <!--android:layout_width="fill_parent"-->
-        <!--android:layout_weight="4"-->
-        <!--android:descendantFocusability="afterDescendants"-->
-        <!--android:windowSoftInputMode="adjustPan" />-->
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:id="@+id/scrollable_layout"
-            android:padding="20dp">
-        </LinearLayout>
-    </ScrollView>
-
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/button_padding"
-        android:textAllCaps="false"
-        android:text="@string/continue_text"
-        android:id="@+id/finish_number_of_players_button"
-        android:backgroundTint="@color/gray"
-        android:textColor="@color/white"
-        android:textSize="@dimen/text_size"
-        android:windowSoftInputMode="adjustPan" />
-
-
-</LinearLayout>
+</ScrollView>
